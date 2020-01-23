@@ -15,13 +15,13 @@ router.post("/register", (req, res) => {
   // Note 'errors' is an object with error types
   const { errors, isValid } = validateRegisterInput(req.body);
 
-  // If errors, return errors found by validator
+  // If errors found by validator, return errors object
   if (!isValid) {
     return res.status(400).json(errors);
   }
 
-  // No erros found by validator
-  // Use Mongoose to find if the email is already in use
+  // If no erros found by validator,
+  // Then use Mongoose to find if the email is already in use
   User.findOne({ email: req.body.email })
     .then(user => {
       if (user) {
@@ -51,6 +51,7 @@ router.post("/login", (req, res) => {
 
   User.findOne({ email }).then(user => {
     if (!user) {
+      // Couldn't find the email entered
       // Use the validations to send the error
       errors.email = "User not found";
       return res.status(404).json(errors);
