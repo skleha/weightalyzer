@@ -8,7 +8,6 @@ module.exports = function validateLoginInput(data)  {
   data.email = validText(data.email) ? data.email : '';
   data.password = validText(data.password) ? data.password: '';
 
-  // See validator docs, verifies if text string is email
   if (!Validator.isEmail(data.email)) {
     errors.email = 'Email is invalid';
   }
@@ -21,7 +20,6 @@ module.exports = function validateLoginInput(data)  {
     errors.password = "Password field is required";
   }
 
-  // Return errors object
   return {
     errors,
     isValid: Object.keys(errors).length === 0
