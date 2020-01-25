@@ -22,7 +22,8 @@ app.get("/", (req, res) => res.send("hello world"));
 // Import defined APIs
 const users = require("./routes/api/users");
 
-// Tell express to use APIs
+// Tell express to use APIs with prefix "/api/users"
+// Any endpoint defined in users will need prefix
 app.use("/api/users", users);
 
 // So we can parse JSON sent to frontend

@@ -8,6 +8,7 @@ const validateLoginInput = require("../../validation/login");
 // Test route
 router.get("/test", (req, res) => res.json({msg: "this is the users route"}))
 
+
 // Registration route
 router.post("/register", (req, res) => {
   
