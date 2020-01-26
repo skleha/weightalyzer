@@ -9,9 +9,10 @@ const validateLoginInput = require("../../validation/login");
 router.get("/test", (req, res) => res.json({msg: "this is the users route"}))
 
 
+
 // Registration route
 router.post("/register", (req, res) => {
-  
+  console.log(req);
   // Deconstruct response coming back from validations
   // Note 'errors' is an object with error types
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -21,8 +22,8 @@ router.post("/register", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  // If no erros found by validator,
-  // Then use Mongoose to find if the email is already in use
+  // If no errors found by validator,
+  // use Mongoose to find if the email is already in use
   User.findOne({ email: req.body.email })
     .then(user => {
       if (user) {
@@ -30,14 +31,23 @@ router.post("/register", (req, res) => {
         errors.email = "Email already exists";
         return res.status(400).json(errors);
       } else {
+        
         // Passed validations, email not in use --> create new user
         const newUser = new User({
           name: req.body.name,
           email: req.body.email,
           password: req.body.password
         });
-    }
-  });
+
+
+
+        // bcrypt here to hash the password
+
+
+
+
+      }
+    });
 });
 
 router.post("/login", (req, res) => {
