@@ -9,10 +9,9 @@ const validateLoginInput = require("../../validation/login");
 router.get("/test", (req, res) => res.json({msg: "this is the users route"}))
 
 
-
 // Registration route
 router.post("/register", (req, res) => {
-  console.log(req);
+
   // Deconstruct response coming back from validations
   // Note 'errors' is an object with error types
   const { errors, isValid } = validateRegisterInput(req.body);
