@@ -26,4 +26,3 @@ app.get("/", (req, res) => res.send("hello world"));
 // Any endpoint defined in users will need prefix
 app.use("/api/users", users);
 
-
