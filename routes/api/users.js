@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
-
-// Import validations
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
+const bcrypt = require('bcryptjs');
+const User = require('../../models/User');
+
 
 // Test route
 router.get("/test", (req, res) => res.json({msg: "this is the users route"}))
@@ -12,43 +13,41 @@ router.get("/test", (req, res) => res.json({msg: "this is the users route"}))
 // Registration route
 router.post("/register", (req, res) => {
 
-  // Deconstruct response coming back from validations
-  // Note 'errors' is an object with error types
   const { errors, isValid } = validateRegisterInput(req.body);
 
-  // If errors found by validator, return errors object
   if (!isValid) {
     return res.status(400).json(errors);
   }
 
-  // If no errors found by validator,
-  // use Mongoose to find if the email is already in use
   User.findOne({ email: req.body.email })
     .then(user => {
       if (user) {
-        // Use the error object from validations to send the error
-        errors.email = "Email already exists";
-        return res.status(400).json(errors);
+        return res.status(400).json({email: "A user has already registered with this address" })
       } else {
         
-        // Passed validations, email not in use --> create new user
         const newUser = new User({
           name: req.body.name,
           email: req.body.email,
           password: req.body.password
         });
 
-
-
-        // bcrypt here to hash the password
-
-
-
+        bcrypt.genSalt(10, (err, salt) => {
+          bcrypt.hash(newUser.password, salt, (err, hash) => {
+            if (err) throw err;
+            newUser.password = hash;
+            newUser.save()
+              .then(user => res.json(user))
+              .catch(err => console.log(err));
+          })
+        })
 
       }
     });
 });
 
+
+
+// Login route
 router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
 
