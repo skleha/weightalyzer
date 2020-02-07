@@ -6,6 +6,7 @@ const app = express(); // Initialize Express server
 const bodyParser = require("body-parser");  // Middlewear for parsing the request body
 const port = process.env.PORT || 5000; // Which port app runs on (process.env.port for Heroku, 5000 for local development)
 const users = require("./routes/api/users");
+const passport = require('passport');
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -19,8 +20,8 @@ app.use(bodyParser.json());
 // Send message to indicate app is listening
 app.listen(port, () => console.log(`Server is running on port ${port}`))
 
-// Response to a GET request to local host 5000
-app.get("/", (req, res) => res.send("hello world"));
+app.use(passport.initialize());
+require('./config/passport')(passport);
 
 // Tell express to use APIs with prefix "/api/users"
 // Any endpoint defined in users will need prefix
