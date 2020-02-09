@@ -5,7 +5,6 @@ const validText = require('./valid-text');
 module.exports = function validateLoginInput(data)  {
   let errors = {};
 
-  // Reset email/password to '' if user entry doesn't pass the validText test
   data.email = validText(data.email) ? data.email : '';
   data.password = validText(data.password) ? data.password: '';
 
