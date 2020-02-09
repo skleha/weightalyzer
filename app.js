@@ -29,4 +29,3 @@ require('./config/passport')(passport);
 // Any endpoint defined in users will need this prefix
 app.use("/api/users", users);
 app.use("/api/weights", weights);
-

@@ -8,3 +8,4 @@ router.get('/test', (req, res) => res.json({msg: "this is the weights route"}));
 // Add weight
 
 
+module.exports = router;
