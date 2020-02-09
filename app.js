@@ -20,10 +20,11 @@ app.use(bodyParser.json());
 // Send message to indicate app is listening
 app.listen(port, () => console.log(`Server is running on port ${port}`))
 
+// Middleware that moves 
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
 // Tell express to use APIs with prefix "/api/users"
-// Any endpoint defined in users will need prefix
+// Any endpoint defined in users will need this prefix
 app.use("/api/users", users);
 
