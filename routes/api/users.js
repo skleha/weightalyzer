@@ -9,8 +9,6 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 
 
-
-
 // Test route
 router.get("/test", (req, res) => res.json({msg: "this is the users route"}))
 
