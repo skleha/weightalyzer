@@ -23,21 +23,16 @@ router.post('/record', (req, res) => {
   const thisDate = new Date(year, month, day);
   const thisWeight = parseFloat(req.body.weight);
   
-  
+  const newWeight = new Weight({
+    userId: thisUserId,
+    date: thisDate,
+    weight: thisWeight,
+  });
 
-  return res.status(200).json({ userId: thisUserId, date: thisDate, weight: thisWeight });
-
-  // { userId: thisUserId, date: thisDate, weight: thisWeight }
-
-  // const newWeight = new Weight({
-  //   userId: thisUserId,
-  //   date: thisDate,
-  //   weight: thisWeight,
-  // });
-
-  // newWeight
-  //   .save()
-  //   .then(weight => res.status(200).json({ msg: success }))
+  newWeight
+    .save()
+    .then(weight => res.status(200).json({ msg: "success" }))
+    .catch(err => res.status(422).json(err));
 
 })
 
