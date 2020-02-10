@@ -9,10 +9,8 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 
 
-
-
 // Test route
-router.get("/test", (req, res) => res.json({msg: "this is the users route"}))
+router.get("/test", (req, res) => res.json({msg: "this is the users test route"}))
 
 // Authentication
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -25,7 +23,7 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 
 // Registration route
 router.post("/register", (req, res) => {
-
+  
   const { errors, isValid } = validateRegisterInput(req.body);
 
   if (!isValid) {
