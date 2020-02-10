@@ -4,14 +4,13 @@ const validDate = require('./valid-date');
 const validNum = require('./valid-num');
 
 module.exports = function validateWeightInput(data) {
+  
   data.userId = validText(data.userId) ? data.userId : '';
   data.date = validDate(data.date) ? data.weight : '';
   data.weight = validNum(data.weight) ? data.weight : '';
   
-  
   let errors = {};
   
-
   if (Validator.isEmpty(data.userId)) {
     errors.userId = "User field is required";
   }

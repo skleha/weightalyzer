@@ -8,15 +8,13 @@ router.get('/test', (req, res) => res.json({msg: "this is the weights test route
 
 // Add weight
 router.post('/record', (req, res) => {
-  
+
   console.log(req.body);
 
   const { errors, isValid } = validateWeightInput(req.body);
 
   if (!isValid) {
-    return res.status(400).json({ msg: "Didn't pass validation"});
-  } else {
-    return res.status(200).json({ msg: "Passed validation" });
+    return res.status(400).json(errors);
   }
 
 })

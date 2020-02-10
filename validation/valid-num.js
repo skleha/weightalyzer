@@ -1,5 +1,6 @@
 const validNum = num => {
-  return typeof num === "number";
+  let converted = parseFloat(num);
+  return typeof converted === "number";
 };
 
 module.exports = validNum;
