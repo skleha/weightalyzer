@@ -5,7 +5,7 @@ import {
 
 const _nullErrors = [];
 
-const sessionErrorsReducer = (state = _nullErrors, action) => {
+const SessionErrorsReducer = (state = _nullErrors, action) => {
   Object.freeze(state);
 
   switch (action.type) {

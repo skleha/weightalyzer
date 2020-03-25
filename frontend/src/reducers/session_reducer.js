@@ -9,7 +9,7 @@ const initialState = {
 }
 
 
-export default function(state = initialState, action) {
+const sessionReducer = (state = initialState, action) => {
   
   switch (action.type) {
   
@@ -36,3 +36,5 @@ export default function(state = initialState, action) {
         return state;
   }
 }
+
+export default sessionReducer;

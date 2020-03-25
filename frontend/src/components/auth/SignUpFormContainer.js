@@ -1,9 +1,14 @@
-import React from "react";
+import { connect } from 'react-redux';
+import { signup } from '../../actions/session_actions';
+import SignUpForm from './SignUpForm';
 
-class SignUpFormContainer extends React.Component {
-  render() {
-    return <div>You've got the signup form</div>;
-  }
-}
+const mapStateToProps = state => ({
+  signedIn: state.session.isSignedIn,
+  errors: state.errors.session
+});
 
-export default SignUpFormContainer;
+const mapDispatchToProps = dispatch => ({
+  signup: user => dispatch(signup(user))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
