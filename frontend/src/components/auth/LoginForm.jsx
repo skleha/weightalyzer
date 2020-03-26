@@ -21,20 +21,22 @@ const LoginForm = () => {
   };
 
 
-  const handleSubmit = () => {
+  const handleSubmit = e => {
+    e.preventDefault();
     dispatch(login(credentials));
   };
 
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={e => handleSubmit(e)}>
         <input
           type="text"
           value={credentials.email}
           onChange={e => handleCredentialChange(e, "email")}
           placeholder="Email"
         />
+        <br />
 
         <input
           type="text"
@@ -42,7 +44,10 @@ const LoginForm = () => {
           onChange={e => handleCredentialChange(e, "password")}
           placeholder="Handle"
         />
+        <br />
 
+        <input type="submit" value="Submit" />
+        
       </form>
     </div>
   );

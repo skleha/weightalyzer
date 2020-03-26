@@ -3,7 +3,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch } from 'react-router-dom';
 import MainPage from './main/main_page';
 import SignUpForm from './auth/SignUpForm';
-import LoginForm from "./auth/SignUpForm";
+import LoginForm from "./auth/LoginForm";
 
 
 const App = () => (
