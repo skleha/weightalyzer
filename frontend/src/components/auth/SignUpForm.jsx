@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { signup } from '../../actions/session_actions';
 
 
@@ -12,11 +12,9 @@ const SignUpForm = () => {
     password2: ''
   })
 
-  // const signedIn = useSelector(state => state.session.isSignedIn);
-  // const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
 
-  const handleStateChange = (e, field) => {
+  const handleCredentialChange = (e, field) => {
     let data = e.target.value;
 
     setCredentials(currentState => ({
@@ -25,13 +23,22 @@ const SignUpForm = () => {
     }))
   }
 
+  const handleSubmit = () => {
+    // const data = JSON.stringify(credentials);
+    // console.log(data);
+    dispatch(signup(credentials))
+  }
+
+
   return (
+
     <div>
-      <form onSubmit={dispatch(signup(credentials))}>
+      <form onSubmit={handleSubmit}>
+
         <input
           type="text"
           value={credentials.email}
-          onChange={e => handleStateChange(e, "email")}
+          onChange={e => handleCredentialChange(e, "email")}
           placeholder="Email"
         />
         <br />
@@ -39,23 +46,23 @@ const SignUpForm = () => {
         <input
           type="text"
           value={credentials.handle}
-          onChange={e => handleStateChange(e, "handle")}
+          onChange={e => handleCredentialChange(e, "handle")}
           placeholder="Handle"
         />
         <br />
 
         <input
-          type="password"
+          type="text"
           value={credentials.password}
-          onChange={e => handleStateChange(e, "password")}
+          onChange={e => handleCredentialChange(e, "password")}
           placeholder="Password"
         />
         <br />
 
         <input
-          type="password"
+          type="text"
           value={credentials.password2}
-          onChange={e => handleStateChange(e, "password2")}
+          onChange={e => handleCredentialChange(e, "password2")}
           placeholder="Confirm Password"
         />
         <br />
