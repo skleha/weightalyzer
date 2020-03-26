@@ -1,76 +1,66 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { signup } from '../../actions/session_actions';
 
 
 const SignUpForm = () => {
 
-  const [signUpInfo, setSignUpInfo] = useState({
+  const [credentials, setCredentials] = useState({
     email: '',
     handle: '',
     password: '',
     password2: ''
   })
 
-  const signedIn = useSelector(state => state.session.isSignedIn);
-  const errors = useSelector(state => state.errors.session);
+  // const signedIn = useSelector(state => state.session.isSignedIn);
+  // const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
+
+  const handleStateChange = (e, field) => {
+    let data = e.target.value;
+
+    setCredentials(currentState => ({
+      ...currentState,
+      [field]: data
+    }))
+  }
 
   return (
     <div>
-      <input
-        type="text"
-        value={signUpInfo.email}
-        onChange={e =>
-          setSignUpInfo(currentState => ({
-            ...currentState,
-            email: e.target.value
-          }))
-        }
-        placeholder="Email"
-      />
-      <br />
+      <form onSubmit={dispatch(signup(credentials))}>
+        <input
+          type="text"
+          value={credentials.email}
+          onChange={e => handleStateChange(e, "email")}
+          placeholder="Email"
+        />
+        <br />
 
-      <input
-        type="text"
-        value={signUpInfo.handle}
-        onChange={e =>
-          setSignUpInfo(currentState => ({
-            ...currentState,
-            handle: e.target.value
-          }))
-        }
-        placeholder="Handle"
-      />
-      <br />
+        <input
+          type="text"
+          value={credentials.handle}
+          onChange={e => handleStateChange(e, "handle")}
+          placeholder="Handle"
+        />
+        <br />
 
-      <input
-        type="password"
-        value={signUpInfo.password}
-        onChange={e =>
-          setSignUpInfo(currentState => ({
-            ...currentState,
-            password: e.target.value
-          }))
-        }
-        placeholder="Password"
-      />
+        <input
+          type="password"
+          value={credentials.password}
+          onChange={e => handleStateChange(e, "password")}
+          placeholder="Password"
+        />
+        <br />
 
-      <br />
-
-      <input
-        type="password"
-        value={signUpInfo.password2}
-        onChange={e =>
-          setSignUpInfo(currentState => ({
-            ...currentState,
-            password2: e.target.value
-          }))
-        }
-        placeholder="Confirm Password"
-      />
-      <br />
-      <input type="submit" value="Submit" />
+        <input
+          type="password"
+          value={credentials.password2}
+          onChange={e => handleStateChange(e, "password2")}
+          placeholder="Confirm Password"
+        />
+        <br />
+        <input type="submit" value="Submit" />
+      </form>
     </div>
   );
 
