@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { signup } from '../../actions/session_actions';
 
 
-const SignUpForm = () => {
+const SignUpForm = props => {
 
   const [credentials, setCredentials] = useState({
     email: '',
     handle: '',
     password: '',
-    password2: ''
-  })
+    password2: '',
+    errors: {}
+  });
 
+  const signedIn = useSelector(state => state.session.isSignedIn);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (signedIn) props.history.push("/login");    
+    // Need to clear errors on successful login
+  })
 
   const handleCredentialChange = (e, field) => {
     let data = e.target.value;
@@ -23,15 +30,15 @@ const SignUpForm = () => {
     }))
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = e => {
+    e.preventDefault();
     dispatch(signup(credentials))
   }
-
 
   return (
 
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={e => handleSubmit(e)}>
 
         <input
           type="text"
@@ -70,6 +77,5 @@ const SignUpForm = () => {
   );
 
 }
-
 
 export default SignUpForm;

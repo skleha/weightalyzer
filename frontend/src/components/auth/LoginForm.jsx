@@ -7,6 +7,7 @@ const LoginForm = () => {
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
+    errors: {}
   });
 
   const dispatch = useDispatch();
