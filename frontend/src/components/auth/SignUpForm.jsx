@@ -24,8 +24,6 @@ const SignUpForm = () => {
   }
 
   const handleSubmit = () => {
-    // const data = JSON.stringify(credentials);
-    // console.log(data);
     dispatch(signup(credentials))
   }
 

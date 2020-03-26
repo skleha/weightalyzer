@@ -4,7 +4,7 @@ import Root from './components/root';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
-import { logout, signup } from './actions/session_actions';
+import { login, signup } from './actions/session_actions';
 
 
 
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore({});
   }
 
-  window.signup = signup;
+  window.signup = login;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   
