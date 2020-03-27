@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../actions/session_actions";
 
 
-const LoginForm = () => {
+const LoginForm = props => {
 
   const [credentials, setCredentials] = useState({
     email: '',
@@ -14,6 +14,10 @@ const LoginForm = () => {
   const authenticated = useSelector(state => state.session.isAuthenticated)
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (authenticated) props.history.push("/weightview");
+    // Need to clear errors on successful login
+  });
 
 
   const handleCredentialChange = (e, field) => {
