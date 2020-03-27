@@ -1,17 +1,50 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch } from 'react-router-dom';
-import MainPage from './main/main_page';
-import SignUpContainer from './auth/SignUpFormContainer';
+import Splash from './main/Splash';
+import SignUpForm from './auth/SignUpForm';
+import LoginForm from "./auth/LoginForm";
+import WeightView from "./main/WeightView";
+import { logout } from "../actions/session_actions";
 
 
+const App = () => {
 
+  const isAuthenticated = useSelector(state => state.session.isAuthenticated);
+  const dispatch = useDispatch();
 
-const App = () => (
-  <Switch>
-    <AuthRoute exact path="/" component={MainPage} />
-    <AuthRoute exact path="/signup" component={SignUpContainer} />
-  </Switch>
-);
+  const handleLogout = e => {
+    e.preventDefault();
+    dispatch(logout());
+  };
+
+  const logout = () => {
+
+    if (isAuthenticated) {
+      return (
+        <form onSubmit={e => handleLogout(e)}>
+          <input type="submit" value="Logout" />
+        </form>
+      );
+    } else {
+      return null;
+    } 
+  }
+
+  return (
+    <div>
+      <div>Weight Tracker v1.0</div>
+      <Switch>
+        <AuthRoute exact path="/" component={Splash} />
+        <AuthRoute exact path="/signup" component={SignUpForm} />
+        <AuthRoute exact path="/login" component={LoginForm} />
+        <ProtectedRoute exact path="/weightview" component={WeightView} />
+      </Switch>
+      { logout() }
+    </div>
+  );
+
+};
 
 export default App;

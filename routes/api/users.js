@@ -100,7 +100,7 @@ router.post("/login", (req, res) => {
           jwt.sign(
             payload,
             keys.secretOrKey,
-            {expiresIn: 3600}, // number of seconds the key is valid
+            {expiresIn: 3600}, // number of milliseconds the key is valid
             (err, token) => {
               res.json({
                 success: true,

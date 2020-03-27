@@ -1,25 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { signup } from '../../actions/session_actions';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { login } from "../../actions/session_actions";
 
 
-const SignUpForm = props => {
+const LoginForm = props => {
 
   const [credentials, setCredentials] = useState({
     email: '',
-    handle: '',
     password: '',
-    password2: '',
     errors: {}
   });
 
-  const signedIn = useSelector(state => state.session.isSignedIn);
+  const authenticated = useSelector(state => state.session.isAuthenticated)
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (signedIn) props.history.push("/login");    
+    if (authenticated) props.history.push("/weightview");
     // Need to clear errors on successful login
-  })
+  });
+
 
   const handleCredentialChange = (e, field) => {
     let data = e.target.value;
@@ -27,19 +26,19 @@ const SignUpForm = props => {
     setCredentials(currentState => ({
       ...currentState,
       [field]: data
-    }))
-  }
+    }));
+  };
+
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(signup(credentials))
-  }
+    dispatch(login(credentials));
+  };
+
 
   return (
-
     <div>
       <form onSubmit={e => handleSubmit(e)}>
-
         <input
           type="text"
           value={credentials.email}
@@ -50,32 +49,18 @@ const SignUpForm = props => {
 
         <input
           type="text"
-          value={credentials.handle}
-          onChange={e => handleCredentialChange(e, "handle")}
+          value={credentials.password}
+          onChange={e => handleCredentialChange(e, "password")}
           placeholder="Handle"
         />
         <br />
 
-        <input
-          type="text"
-          value={credentials.password}
-          onChange={e => handleCredentialChange(e, "password")}
-          placeholder="Password"
-        />
-        <br />
-
-        <input
-          type="text"
-          value={credentials.password2}
-          onChange={e => handleCredentialChange(e, "password2")}
-          placeholder="Confirm Password"
-        />
-        <br />
         <input type="submit" value="Submit" />
+        
       </form>
     </div>
   );
 
 }
 
-export default SignUpForm;
+export default LoginForm;
