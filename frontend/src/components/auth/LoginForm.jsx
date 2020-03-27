@@ -1,16 +1,20 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../actions/session_actions";
+
 
 const LoginForm = () => {
 
   const [credentials, setCredentials] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
     errors: {}
   });
 
+  const authenticated = useSelector(state => state.session.isAuthenticated)
   const dispatch = useDispatch();
+
+
 
   const handleCredentialChange = (e, field) => {
     let data = e.target.value;
