@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore({});
   }
 
+
+  // Functions defined on window; REMEMBER TO REMOVE
   window.logout = logout;
   window.signup = login;
   window.getState = store.getState;
