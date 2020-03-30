@@ -7,7 +7,8 @@ import SignUpForm from './auth/SignUpForm';
 import LoginForm from "./auth/LoginForm";
 import WeightView from "./main/WeightView";
 import { logout } from "../actions/session_actions";
-
+import '../stylesheets/reset.css'
+import "../stylesheets/app.css";
 
 const App = () => {
 
