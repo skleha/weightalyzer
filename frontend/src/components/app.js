@@ -19,7 +19,7 @@ const App = () => {
     dispatch(logout());
   };
 
-  const logout = () => {
+  const logoutButton = () => {
 
     if (isAuthenticated) {
       return (
@@ -41,7 +41,7 @@ const App = () => {
         <AuthRoute exact path="/login" component={LoginForm} />
         <ProtectedRoute exact path="/weightview" component={WeightView} />
       </Switch>
-      { logout() }
+      { logoutButton }
     </div>
   );
 
