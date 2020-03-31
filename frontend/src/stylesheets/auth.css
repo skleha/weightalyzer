@@ -1,0 +1,21 @@
+
+
+
+
+
+input[type=text] {
+  height: 30px;
+  width: 200px;
+  padding: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  border: 1px solid lightgrey;
+  margin-bottom: 12px;
+}
+
+input[type=submit] {
+  background-color: #1C4D4D;
+  font-size: 15px;
+  color: white;
+}
+
