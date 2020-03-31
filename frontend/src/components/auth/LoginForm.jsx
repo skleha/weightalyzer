@@ -51,7 +51,7 @@ const LoginForm = props => {
           type="text"
           value={credentials.password}
           onChange={e => handleCredentialChange(e, "password")}
-          placeholder="Handle"
+          placeholder="Pasword"
         />
         <br />
 

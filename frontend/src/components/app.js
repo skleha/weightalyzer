@@ -6,9 +6,14 @@ import Splash from './main/Splash';
 import SignUpForm from './auth/SignUpForm';
 import LoginForm from "./auth/LoginForm";
 import WeightView from "./main/WeightView";
+import WeightEnter from "./main/WeightEnter";
 import { logout } from "../actions/session_actions";
 import '../stylesheets/reset.css'
 import "../stylesheets/app.css";
+
+
+
+
 
 const App = () => {
 
@@ -21,7 +26,6 @@ const App = () => {
   };
 
   const logoutButton = () => {
-
     if (isAuthenticated) {
       return (
         <form onSubmit={e => handleLogout(e)}>
@@ -30,8 +34,8 @@ const App = () => {
       );
     } else {
       return null;
-    } 
-  }
+    }
+  };
 
   return (
     <div>
@@ -41,8 +45,9 @@ const App = () => {
         <AuthRoute exact path="/signup" component={SignUpForm} />
         <AuthRoute exact path="/login" component={LoginForm} />
         <ProtectedRoute exact path="/weightview" component={WeightView} />
+        <ProtectedRoute exact path="/weightenter" component={WeightEnter} />
       </Switch>
-      { logoutButton }
+      {logoutButton()}
     </div>
   );
 
