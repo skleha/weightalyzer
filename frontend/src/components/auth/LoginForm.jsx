@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from 'react-router-dom';
 import { login } from "../../actions/session_actions";
 
 
@@ -37,8 +38,8 @@ const LoginForm = props => {
 
 
   return (
-    <div className="auth-form">
-      <form onSubmit={e => handleSubmit(e)}>
+    <div>
+      <form className="auth-form" onSubmit={e => handleSubmit(e)}>
         <input
           type="text"
           value={credentials.email}
@@ -55,8 +56,11 @@ const LoginForm = props => {
         />
         <br />
 
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Login" />
         
+        <div>Did you need to <Link to="/signup">signup</Link>?</div>
+
+
       </form>
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { signup } from '../../actions/session_actions';
 import '../../stylesheets/auth.css';
@@ -37,8 +38,8 @@ const SignUpForm = props => {
 
   return (
 
-    <div className="auth-form">
-      <form onSubmit={e => handleSubmit(e)}>
+    <div>
+      <form className="auth-form" onSubmit={e => handleSubmit(e)}>
 
         <input
           type="text"
@@ -71,7 +72,11 @@ const SignUpForm = props => {
           placeholder="Confirm Password"
         />
         <br />
-        <input type="submit" value="Submit" />
+        
+        <input type="submit" value="Signup" />
+
+        <div>Did you need to <Link to="/login">login</Link>?</div>
+
       </form>
     </div>
   );
