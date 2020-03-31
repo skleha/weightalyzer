@@ -37,7 +37,7 @@ const SignUpForm = props => {
 
   return (
 
-    <div>
+    <div className="auth-form">
       <form onSubmit={e => handleSubmit(e)}>
 
         <input

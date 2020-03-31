@@ -1,21 +1,29 @@
 
-
-
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;  
+}
 
 
 input[type=text] {
-  height: 30px;
+  height: 33px;
   width: 200px;
   padding: 8px;
   font-size: 14px;
   box-sizing: border-box;
   border: 1px solid lightgrey;
   margin-bottom: 12px;
+  border-radius: 5px;
 }
 
 input[type=submit] {
-  background-color: #1C4D4D;
+  height: 30px;
+  width: 100px;
+  background-color: #3696D4;
   font-size: 15px;
   color: white;
+  border-radius: 5px;
 }
 
