@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { signup } from '../../actions/session_actions';
-
+import '../../stylesheets/auth.css';
 
 const SignUpForm = props => {
 
@@ -37,7 +37,7 @@ const SignUpForm = props => {
 
   return (
 
-    <div>
+    <div className="auth-form">
       <form onSubmit={e => handleSubmit(e)}>
 
         <input
