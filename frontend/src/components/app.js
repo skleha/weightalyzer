@@ -13,8 +13,6 @@ import "../stylesheets/app.css";
 
 
 
-
-
 const App = () => {
 
   const isAuthenticated = useSelector(state => state.session.isAuthenticated);
