@@ -73,7 +73,7 @@ const LoginForm = props => {
 
         <input type="submit" value="Login" />
         
-        <div className="auth-div">Did you need to <Link to="/signup">signup</Link>?</div>
+        <div className="auth-div">Did you need to <Link to="/register">register</Link>?</div>
 
         { renderErrors() }
 

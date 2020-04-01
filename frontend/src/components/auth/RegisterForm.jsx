@@ -14,7 +14,7 @@ const SignUpForm = props => {
   });
 
   const signedIn = useSelector(state => state.session.isSignedIn);
-  const signupErrors = useSelector(state => state.errors.session);
+  const registrationErrors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,13 +38,13 @@ const SignUpForm = props => {
 
   const renderErrors = () => {
 
-    const errorKeys = Object.keys(signupErrors);
+    const errorKeys = Object.keys(registrationErrors);
     const showErrors = errorKeys.length !== 0 ? "show" : "";
 
     return (
       <ul className={`auth-errors ${showErrors}`}>
         {errorKeys.map((error, i) =>
-          <li key={`error-${i}`}>{signupErrors[error]}</li>
+          <li key={`error-${i}`}>{registrationErrors[error]}</li>
         )}
       </ul>
     )
