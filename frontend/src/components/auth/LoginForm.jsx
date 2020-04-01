@@ -14,7 +14,6 @@ const LoginForm = props => {
 
   const authenticated = useSelector(state => state.session.isAuthenticated);
   const loginErrors = useSelector(state => state.errors.session);
-  console.log(loginErrors);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,24 +37,26 @@ const LoginForm = props => {
     dispatch(login(credentials));
   };
 
-  const errorList = () => {
-    if (loginErrors.length !== 0) {
+  const renderErrors = () => {
+    
+    const errorKeys = Object.keys(loginErrors);
+
       return (
         <ul className="auth-errors">
-          {loginErrors.map(error => 
-            <li>{error}</li>
+          {errorKeys.map((error, i) => 
+            <li key={`error-${i}`}>{loginErrors[error]}</li>
           )}
         </ul>
-      )
-    } else {
-      return null;
-    }
+        )  
   }
 
 
   return (
     <div>
       <form className="auth-form" onSubmit={e => handleSubmit(e)}>
+
+        { renderErrors() }
+
         <input
           type="text"
           value={credentials.email}
@@ -72,12 +73,11 @@ const LoginForm = props => {
         />
         <br />
 
-        {errorList()}
-        
         <input type="submit" value="Login" />
         
         <div>Did you need to <Link to="/signup">signup</Link>?</div>
 
+        
 
       </form>
     </div>
