@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const validateWeightInput = require("../../validation/weightValidation");
+const validateWeightInput = require("../../validation/weights");
 const Weight = require('../../models/Weight');
 
 // Test route
