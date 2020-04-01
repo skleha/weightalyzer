@@ -73,6 +73,7 @@ router.post("/register", (req, res) => {
 
 // Login route
 router.post("/login", (req, res) => {
+  
   const { errors, isValid } = validateLoginInput(req.body);
 
   if (!isValid) {

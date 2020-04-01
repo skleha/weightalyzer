@@ -3,15 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch } from 'react-router-dom';
 import Splash from './main/Splash';
-import SignUpForm from './auth/SignUpForm';
+import SignUpForm from './auth/RegisterForm';
 import LoginForm from "./auth/LoginForm";
 import WeightView from "./main/WeightView";
 import WeightEnter from "./main/WeightEnter";
 import { logout } from "../actions/session_actions";
 import '../stylesheets/reset.css'
 import "../stylesheets/app.css";
-
-
 
 
 
@@ -42,7 +40,7 @@ const App = () => {
       <div className="header-title">Weight Tracker v1.0</div>
       <Switch>
         <AuthRoute exact path="/" component={Splash} />
-        <AuthRoute exact path="/signup" component={SignUpForm} />
+        <AuthRoute exact path="/register" component={SignUpForm} />
         <AuthRoute exact path="/login" component={LoginForm} />
         <ProtectedRoute exact path="/weightview" component={WeightView} />
         <ProtectedRoute exact path="/weightenter" component={WeightEnter} />

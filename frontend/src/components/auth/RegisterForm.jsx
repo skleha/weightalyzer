@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { signup } from '../../actions/session_actions';
 import '../../stylesheets/auth.css';
@@ -10,10 +11,10 @@ const SignUpForm = props => {
     handle: '',
     password: '',
     password2: '',
-    errors: {}
   });
 
   const signedIn = useSelector(state => state.session.isSignedIn);
+  const registrationErrors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,10 +36,24 @@ const SignUpForm = props => {
     dispatch(signup(credentials))
   }
 
+  const renderErrors = () => {
+
+    const errorKeys = Object.keys(registrationErrors);
+    const showErrors = errorKeys.length !== 0 ? "show" : "";
+
+    return (
+      <ul className={`auth-errors ${showErrors}`}>
+        {errorKeys.map((error, i) =>
+          <li key={`error-${i}`}>{registrationErrors[error]}</li>
+        )}
+      </ul>
+    )
+  }
+
   return (
 
-    <div className="auth-form">
-      <form onSubmit={e => handleSubmit(e)}>
+    <div>
+      <form className="auth-form" onSubmit={e => handleSubmit(e)}>
 
         <input
           type="text"
@@ -71,7 +86,13 @@ const SignUpForm = props => {
           placeholder="Confirm Password"
         />
         <br />
-        <input type="submit" value="Submit" />
+        
+        <input type="submit" value="Signup" />
+
+        <div className="auth-div">Did you need to <Link to="/login">login</Link>?</div>
+
+        { renderErrors() }
+
       </form>
     </div>
   );
