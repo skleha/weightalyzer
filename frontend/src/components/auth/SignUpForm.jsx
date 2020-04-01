@@ -75,7 +75,7 @@ const SignUpForm = props => {
         
         <input type="submit" value="Signup" />
 
-        <div>Did you need to <Link to="/login">login</Link>?</div>
+        <div className="auth-div">Did you need to <Link to="/login">login</Link>?</div>
 
       </form>
     </div>

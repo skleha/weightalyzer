@@ -40,22 +40,21 @@ const LoginForm = props => {
   const renderErrors = () => {
     
     const errorKeys = Object.keys(loginErrors);
+    const showErrors = errorKeys.length !== 0 ? "show" : "";
 
-      return (
-        <ul className="auth-errors">
-          {errorKeys.map((error, i) => 
-            <li key={`error-${i}`}>{loginErrors[error]}</li>
-          )}
-        </ul>
-        )  
+    return (
+      <ul className={`auth-errors ${showErrors}`}>
+        { errorKeys.map((error, i) => 
+          <li key={`error-${i}`}>{loginErrors[error]}</li>
+        )}
+      </ul>
+    )  
   }
 
 
   return (
     <div>
       <form className="auth-form" onSubmit={e => handleSubmit(e)}>
-
-        { renderErrors() }
 
         <input
           type="text"
@@ -75,9 +74,9 @@ const LoginForm = props => {
 
         <input type="submit" value="Login" />
         
-        <div>Did you need to <Link to="/signup">signup</Link>?</div>
+        <div className="auth-div">Did you need to <Link to="/signup">signup</Link>?</div>
 
-        
+        { renderErrors() }
 
       </form>
     </div>

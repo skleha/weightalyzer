@@ -29,7 +29,16 @@ input[type=submit] {
   margin-bottom: 15px;
 }
 
+.auth-div {
+  margin-bottom: 15px;
+}
+
 .auth-errors {
   color: red;
-  
+  opacity: 0;
+}
+
+.auth-errors.show {
+  opacity: 1;
+  transition: opacity .4s;
 }
