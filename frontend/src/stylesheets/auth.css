@@ -30,10 +30,11 @@ input[type=submit] {
 }
 
 .auth-div {
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
 
 .auth-errors {
+  text-align: center;
   color: red;
   opacity: 0;
 }
@@ -41,4 +42,8 @@ input[type=submit] {
 .auth-errors.show {
   opacity: 1;
   transition: opacity .4s;
+}
+
+.auth-errors li {
+  margin-bottom: 7px;
 }

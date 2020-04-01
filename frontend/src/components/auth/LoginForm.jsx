@@ -9,7 +9,6 @@ const LoginForm = props => {
   const [credentials, setCredentials] = useState({
     email: '',
     password: '',
-    errors: {}
   });
 
   const authenticated = useSelector(state => state.session.isAuthenticated);
