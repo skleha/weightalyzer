@@ -4,7 +4,8 @@ import Root from './components/root';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
-import { logout, login } from './actions/session_actions';
+import { logout } from './actions/session_actions';
+import { fetchWeights, createWeight } from './util/weight_api_util';
 
 
 
@@ -28,9 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // Functions defined on window; REMEMBER TO REMOVE
-  window.logout = logout;
-  window.signup = login;
+  // Functions defined on window
+  window.fetchWeights = fetchWeights;
+  window.createWeight = createWeight;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   
