@@ -17,11 +17,11 @@ const receiveWeight = weight => ({
 
 export const fetchWeights = userId => dispatch => (
   WeightAPIUtil.fetchWeights(userId)
-    .then(weights => dispatch(receiveWeights(notes)))
+    .then(weights => dispatch(receiveWeights(weights)))
 );
 
 export const createWeight = data => dispatch => (
-  Weight.APIUtil.createWeight(data)
+  WeightAPIUtil.createWeight(data)
     .then(weight => dispatch(receiveWeight(weight)))
 );
 
