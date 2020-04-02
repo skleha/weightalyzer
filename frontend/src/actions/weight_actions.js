@@ -24,4 +24,3 @@ export const createWeight = data => dispatch => (
   WeightAPIUtil.createWeight(data)
     .then(weight => dispatch(receiveWeight(weight)))
 );
-

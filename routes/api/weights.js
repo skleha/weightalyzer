@@ -9,6 +9,8 @@ router.get('/test', (req, res) => res.json({msg: "this is the weights test route
 // Get all weights
 router.get('/', async (req,res) => {
   
+  console.log(req);
+
   try {
     const weights = await Weight.find({ userId: req.body.userId })
     res.json(weights);
