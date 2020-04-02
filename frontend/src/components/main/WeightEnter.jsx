@@ -5,17 +5,19 @@ import { fetchWeights, createWeight } from "../../actions/weight_actions";
 
 const WeightEnter = props => {
 
-  const userId = useSelector(state => state.session.user.id);
+  const id = useSelector(state => state.session.user.id);
+  
   const [weightData, setWeightData] = useState({
-    userId,
+    userId: id,
     weight: "",
     date: ""
   });
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchWeights(userId);
-  }, []);
+    dispatch(fetchWeights(id));
+    // Don't know why I need dispatch and id in array
+  }, [dispatch, id]);
 
   const handleInput = (e, field) => {
     let data = e.target.value;
@@ -24,6 +26,7 @@ const WeightEnter = props => {
       ...currentState,
       [field]: data
     }));
+    console.log(weightData);
   };
 
   const handleSubmit = async e => {
@@ -36,8 +39,6 @@ const WeightEnter = props => {
     
     dispatch(createWeight(weightData));
   };
-
-
 
   return (
     <div>

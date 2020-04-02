@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
 import { login } from "../../actions/session_actions";
 
-
 const LoginForm = props => {
 
   const [credentials, setCredentials] = useState({
