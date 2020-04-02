@@ -3,23 +3,19 @@ const router = express.Router();
 const validateWeightInput = require("../../validation/weights");
 const Weight = require('../../models/Weight');
 
-// Test route
-router.get('/test', (req, res) => res.json({msg: "this is the weights test route"}));
 
-// Get all weights
-router.get('/', async (req,res) => {
-  
-  console.log(req);
+// Get all weights for user
+router.get('/:userId', async (req,res) => {
 
   try {
-    const weights = await Weight.find({ userId: req.body.userId })
-    res.json(weights);
+    const weights = await Weight.find({ userId: req.params.userId })
+    res.status(200).json(weights)
   }
 
   catch(err) {
     console.log(err);
   }
-
+    
 })
 
 
