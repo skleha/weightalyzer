@@ -6,8 +6,23 @@ const Weight = require('../../models/Weight');
 // Test route
 router.get('/test', (req, res) => res.json({msg: "this is the weights test route"}));
 
-// Add weight
-router.post('/record', (req, res) => {
+// Get all weights
+router.get('/', async (req,res) => {
+  
+  try {
+    const weights = await Weight.find({ userId: req.body.userId })
+    res.json(weights);
+  }
+
+  catch(err) {
+    console.log(err);
+  }
+
+})
+
+
+// Create a weight
+router.post('/', (req, res) => {
   
   const { errors, isValid } = validateWeightInput(req.body);
   
