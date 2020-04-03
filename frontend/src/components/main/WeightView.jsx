@@ -13,11 +13,12 @@ const WeightView = () => {
   
 
   return (
-    <LineChart width={300} height={300} data={data}>
-    <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-  </LineChart>    
-
-  )
+    <div className="something">
+      <LineChart width={300} height={300} data={data}>
+        <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+      </LineChart>
+    </div>
+  );
   
 }
 
