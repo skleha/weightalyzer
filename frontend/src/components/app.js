@@ -27,9 +27,9 @@ const App = () => {
   const logoutButton = () => {
     if (isAuthenticated) {
       return (
-        <form className="logout-button" onSubmit={e => handleLogout(e)}>
-          <input type="submit" value="Logout" />
-        </form>
+        <div className="logout-button-container">
+          <button onClick={handleLogout}>Logout</button>
+        </div>
       );
     } else {
       return null;
