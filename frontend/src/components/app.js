@@ -9,8 +9,8 @@ import WeightView from "./main/WeightView";
 import WeightEnter from "./main/WeightEnter";
 import { logout } from "../actions/session_actions";
 import '../stylesheets/reset.css'
-import "../stylesheets/app.css";
-
+import '../stylesheets/app.css';
+import '../stylesheets/weights.css';
 
 
 const App = () => {
@@ -26,7 +26,7 @@ const App = () => {
   const logoutButton = () => {
     if (isAuthenticated) {
       return (
-        <form onSubmit={e => handleLogout(e)}>
+        <form className="logout-button" onSubmit={e => handleLogout(e)}>
           <input type="submit" value="Logout" />
         </form>
       );
