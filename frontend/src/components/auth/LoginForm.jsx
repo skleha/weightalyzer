@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
 import { login } from "../../actions/session_actions";
 
-
 const LoginForm = props => {
 
   const [credentials, setCredentials] = useState({
@@ -16,7 +15,7 @@ const LoginForm = props => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (authenticated) props.history.push("/weightview");
+    if (authenticated) props.history.push("/weightenter");
     // Need to clear errors on successful login
   });
 
@@ -67,7 +66,7 @@ const LoginForm = props => {
           type="text"
           value={credentials.password}
           onChange={e => handleInput(e, "password")}
-          placeholder="Pasword"
+          placeholder="Password"
         />
         <br />
 

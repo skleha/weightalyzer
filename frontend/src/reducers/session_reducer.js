@@ -8,7 +8,6 @@ const initialState = {
   user: {}
 }
 
-
 const sessionReducer = (state = initialState, action) => {
   
   switch (action.type) {

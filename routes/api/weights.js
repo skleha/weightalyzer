@@ -3,54 +3,49 @@ const router = express.Router();
 const validateWeightInput = require("../../validation/weights");
 const Weight = require('../../models/Weight');
 
-// Test route
-router.get('/test', (req, res) => res.json({msg: "this is the weights test route"}));
 
-// Get all weights
-router.get('/', async (req,res) => {
-  
-  console.log(req);
+// Get all weights for user
+router.get('/:userId', async (req,res) => {
 
   try {
-    const weights = await Weight.find({ userId: req.body.userId })
-    res.json(weights);
+    const weights = await Weight.find({ userId: req.params.userId })
+    res.status(200).json(weights)
   }
 
   catch(err) {
     console.log(err);
   }
-
+    
 })
 
 
 // Create a weight
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   
-  const { errors, isValid } = validateWeightInput(req.body);
+  const weightData = Object.assign({}, req.body);
+  weightData.date = new Date();
+  weightData.weight = parseFloat(weightData.weight);
   
+  const { errors, isValid } = validateWeightInput(weightData);
+
   if (!isValid) {
     return res.status(400).json(errors);
   }
 
-  const thisUserId = req.body.userId;
-  const dateData = req.body.date.split("-");
-  const year = parseInt(dateData[0]);
-  const month = parseInt(dateData[1]);
-  const day = parseInt(dateData[2]);
-  const thisDate = new Date(year, month, day);
-  const thisWeight = parseFloat(req.body.weight);
-  
   const newWeight = new Weight({
-    userId: thisUserId,
-    date: thisDate,
-    weight: thisWeight,
+    userId: weightData.userId,
+    date: weightData.date,
+    weight: weightData.weight,
   });
 
-  newWeight
-    .save()
-    .then(weight => res.status(200).json({ msg: "success" }))
-    .catch(err => res.status(422).json(err));
-
+  try {
+    const response = await newWeight.save()
+    res.status(200).json(response);
+  }
+  catch(err) {
+    console.log(err);
+  }
+  
 })
 
 module.exports = router;
