@@ -35,12 +35,11 @@ router.post('/', async (req, res) => {
   const newWeight = new Weight({
     userId: weightData.userId,
     date: weightData.date,
-    weight: weightDate.weight,
+    weight: weightData.weight,
   });
 
   try {
     const response = await newWeight.save()
-    console.log(response);
     res.status(200).json(response);
   }
   catch(err) {
