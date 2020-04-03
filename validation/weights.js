@@ -6,8 +6,7 @@ const validNum = require('./valid-num');
 module.exports = function validateWeightInput(data) {
   
   data.userId = validText(data.userId) ? data.userId : '';
-  data.date = validText(data.date) ? data.date : '';
-  data.weight = validText(data.weight) ? data.weight : '';
+  data.weight = validNum(data.weight) ? data.weight : '';
   
   let errors = {};
   
@@ -15,11 +14,11 @@ module.exports = function validateWeightInput(data) {
     errors.userId = "User field is required";
   }
 
-  if (Validator.isEmpty(data.date)) {
+  if (!validDate(data.date)) {
     errors.date = "Date field is required";
   }
 
-  if (Validator.isEmpty(data.weight)) {
+  if (!validNum(data.weight)) {
     errors.weight = "Weight field is required";
   }
 

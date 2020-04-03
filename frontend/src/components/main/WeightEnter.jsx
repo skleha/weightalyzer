@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from 'react-router-dom';
 import { fetchWeights, createWeight } from "../../actions/weight_actions";
 
 const WeightEnter = props => {
@@ -10,14 +9,13 @@ const WeightEnter = props => {
   const [weightData, setWeightData] = useState({
     userId: id,
     weight: "",
-    date: ""
   });
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchWeights(id));
-    // Don't know why I need dispatch and id in array
-  }, [dispatch, id]);
+  }, [dispatch, id]); // Don't know why I need dispatch and id in array
 
   const handleInput = (e, field) => {
     let data = e.target.value;
@@ -26,17 +24,10 @@ const WeightEnter = props => {
       ...currentState,
       [field]: data
     }));
-    console.log(weightData);
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
-
-    await setWeightData(currentState => ({
-      ...currentState,
-      date: new Date()
-    }))
-    
     dispatch(createWeight(weightData));
   };
 
