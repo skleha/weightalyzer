@@ -43,8 +43,8 @@ const App = () => {
         <AuthRoute exact path="/" component={Splash} />
         <AuthRoute exact path="/register" component={SignUpForm} />
         <AuthRoute exact path="/login" component={LoginForm} />
-        <ProtectedRoute exact path="/weightview" component={WeightView} />
         <ProtectedRoute exact path="/weightenter" component={WeightEnter} />
+        <ProtectedRoute exact path="/weightview" component={WeightView} />
       </Switch>
       {logoutButton()}
     </div>

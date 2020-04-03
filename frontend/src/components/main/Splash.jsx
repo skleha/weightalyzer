@@ -14,7 +14,7 @@ const Splash = props => {
     <div>
     
       <div className="splash-copy">
-        A simple application to keep track of your weight over time.
+        A simple application to keep track of your weight over time!
       </div>
     
       <div className="splash-button-tray">

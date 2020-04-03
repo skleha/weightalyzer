@@ -15,7 +15,7 @@ const WeightEnter = props => {
 
   useEffect(() => {
     dispatch(fetchWeights(id));
-  }, [dispatch, id]); // Don't know why I need dispatch and id in array
+  }, [dispatch, id]); // Don't know why I need dispatch and id in dependency array
 
   const handleInput = (e, field) => {
     let data = e.target.value;
@@ -50,10 +50,6 @@ const WeightEnter = props => {
 
 
   )
-
-
 }
-
-
 
 export default WeightEnter;

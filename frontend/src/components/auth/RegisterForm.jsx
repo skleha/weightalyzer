@@ -19,7 +19,7 @@ const SignUpForm = props => {
 
   useEffect(() => {
     if (signedIn) props.history.push("/login");    
-    // Need to clear errors on successful login
+    // Need to clear session errors on successful register
   })
 
   const handleCredentialChange = (e, field) => {
