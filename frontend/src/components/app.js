@@ -11,6 +11,7 @@ import { logout } from "../actions/session_actions";
 import '../stylesheets/reset.css'
 import '../stylesheets/app.css';
 import '../stylesheets/weights.css';
+import '../stylesheets/splash.css';
 
 
 const App = () => {

@@ -1,14 +1,12 @@
 import React from 'react';
 
-class Splash extends React.Component {
+const Splash = () => {
 
-  render() {
-    return (
-      <div>
-        You've got the splash
-      </div>
-    );
-  }
+  return (
+    <div className="splash">
+      A simple application to keep track of your weight over time.
+    </div>
+  )
 }
 
 export default Splash;
