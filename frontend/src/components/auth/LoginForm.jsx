@@ -16,7 +16,7 @@ const LoginForm = props => {
 
   useEffect(() => {
     if (authenticated) props.history.push("/weightenter");
-    // Need to clear errors on successful login
+    // Need to clear session errors on successful login
   });
 
 

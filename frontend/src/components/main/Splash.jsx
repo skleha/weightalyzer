@@ -1,14 +1,29 @@
 import React from 'react';
 
-class Splash extends React.Component {
+const Splash = props => {
 
-  render() {
-    return (
-      <div>
-        You've got the splash
-      </div>
-    );
+  const handleRegisterClick = () => {
+    props.history.push("/register");
   }
+
+  const handleLoginClick = () => {
+    props.history.push("/login");
+  }
+
+  return (
+    <div>
+    
+      <div className="splash-copy">
+        A simple application to keep track of your weight over time!
+      </div>
+    
+      <div className="splash-button-tray">
+        <button onClick={handleRegisterClick}>Register</button>
+        <button onClick={handleLoginClick}>Login</button>
+      </div>
+
+    </div>
+  )
 }
 
 export default Splash;

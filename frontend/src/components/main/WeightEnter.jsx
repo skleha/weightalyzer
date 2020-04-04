@@ -1,21 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchWeights, createWeight } from "../../actions/weight_actions";
+import { createWeight } from "../../actions/weight_actions";
 
 const WeightEnter = props => {
 
   const id = useSelector(state => state.session.user.id);
-  
+  const dispatch = useDispatch();
+
   const [weightData, setWeightData] = useState({
     userId: id,
     weight: "",
   });
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchWeights(id));
-  }, [dispatch, id]); // Don't know why I need dispatch and id in array
 
   const handleInput = (e, field) => {
     let data = e.target.value;
@@ -31,6 +26,10 @@ const WeightEnter = props => {
     dispatch(createWeight(weightData));
   };
 
+  const handleViewClick = () => {
+    props.history.push("/weightview");
+  }
+
   return (
     <div>
       <form className="weight-form" onSubmit={e => handleSubmit(e)}>
@@ -45,15 +44,15 @@ const WeightEnter = props => {
 
         <input type="submit" value="Submit" />
       
+        <button onClick={handleViewClick}>Go To View</button>
       </form>
+
+      
+
     </div>
 
 
   )
-
-
 }
-
-
 
 export default WeightEnter;

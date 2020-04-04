@@ -11,6 +11,7 @@ import { logout } from "../actions/session_actions";
 import '../stylesheets/reset.css'
 import '../stylesheets/app.css';
 import '../stylesheets/weights.css';
+import '../stylesheets/splash.css';
 
 
 const App = () => {
@@ -26,9 +27,9 @@ const App = () => {
   const logoutButton = () => {
     if (isAuthenticated) {
       return (
-        <form className="logout-button" onSubmit={e => handleLogout(e)}>
-          <input type="submit" value="Logout" />
-        </form>
+        <div className="logout-button-container">
+          <button onClick={handleLogout}>Logout</button>
+        </div>
       );
     } else {
       return null;
@@ -42,8 +43,8 @@ const App = () => {
         <AuthRoute exact path="/" component={Splash} />
         <AuthRoute exact path="/register" component={SignUpForm} />
         <AuthRoute exact path="/login" component={LoginForm} />
-        <ProtectedRoute exact path="/weightview" component={WeightView} />
         <ProtectedRoute exact path="/weightenter" component={WeightEnter} />
+        <ProtectedRoute exact path="/weightview" component={WeightView} />
       </Switch>
       {logoutButton()}
     </div>
