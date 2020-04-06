@@ -6,7 +6,10 @@ import { fetchWeights } from "../../actions/weight_actions";
 const WeightView = props => {
   
   const id = useSelector(state => state.session.user.id);
-  const weightData = useSelector(state => Object.values(state.weights));
+  const weightData = useSelector(state => {
+    const sorted = Object.values(state.weights);
+    return sorted.sort((a,b) => a.date - b.date)
+  });
   const dispatch = useDispatch();
 
   
@@ -24,7 +27,6 @@ const WeightView = props => {
   const handleEnterClick = () => {
     props.history.push("/weightenter");
   }
-
 
   return (
    <div className="weight-form">
