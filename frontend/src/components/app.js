@@ -8,10 +8,11 @@ import LoginForm from "./auth/LoginForm";
 import WeightView from "./main/WeightView";
 import WeightEnter from "./main/WeightEnter";
 import { logout } from "../actions/session_actions";
-import '../stylesheets/reset.css'
-import '../stylesheets/app.css';
-import '../stylesheets/weights.css';
-import '../stylesheets/splash.css';
+import '../stylesheets/reset.scss'
+import '../stylesheets/app.scss';
+import '../stylesheets/weights.scss';
+import '../stylesheets/splash.scss';
+import '../stylesheets/auth.scss';
 
 
 const App = () => {

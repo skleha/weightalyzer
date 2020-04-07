@@ -4,9 +4,6 @@ import Root from './components/root';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
-import { logout } from './actions/session_actions';
-import { fetchWeights, createWeight } from './actions/weight_actions';
-
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -28,13 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore({});
   }
 
-
-  // Functions defined on window
-  window.fetchWeights = fetchWeights;
-  window.createWeight = createWeight;
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
-  
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
 });
