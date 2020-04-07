@@ -29,7 +29,7 @@ const WeightView = props => {
   }
 
   return (
-   <div className="weight-form">
+   <div className="weight-view">
     <div className="weight-graph-container">
         <LineChart
           className="weight-graph"
@@ -42,8 +42,10 @@ const WeightView = props => {
           <XAxis dataKey="date" tickFormatter={dateFormatter} />
           <YAxis />
         </LineChart>
-      </div>
+    </div>
+
       <button onClick={handleEnterClick}>Enter Weight</button>
+
     </div>
   );
 };
