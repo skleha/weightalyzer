@@ -21,9 +21,10 @@ const WeightEnter = props => {
     }));
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    dispatch(createWeight(weightData));
+    await dispatch(createWeight(weightData));
+    props.history.push("/weightview");
   };
 
   const handleViewClick = () => {
@@ -31,7 +32,7 @@ const WeightEnter = props => {
   }
 
   return (
-    <div>
+    <div className="weight-view">
       <form className="weight-form" onSubmit={e => handleSubmit(e)}>
 
         <input
@@ -43,11 +44,10 @@ const WeightEnter = props => {
         <br />
 
         <input type="submit" value="Submit" />
-      
-        <button onClick={handleViewClick}>Go To View</button>
+              
       </form>
 
-      
+      <button onClick={handleViewClick}>Go To View</button>
 
     </div>
 

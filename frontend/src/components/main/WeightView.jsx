@@ -3,16 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { LineChart, Line, XAxis, YAxis } from 'recharts';
 import { fetchWeights } from "../../actions/weight_actions";
 
-const data = [
-  { name: "Page A", uv: 140 },
-  { name: "Page B", uv: 145 },
-  { name: "Page C", uv: 150 }
-];
-
-const WeightView = () => {
+const WeightView = props => {
   
   const id = useSelector(state => state.session.user.id);
-  const weightData = useSelector(state => Object.values(state.weights));
+  const weightData = useSelector(state => {
+    const sorted = Object.values(state.weights);
+    return sorted.sort((a,b) => a.date - b.date)
+  });
   const dispatch = useDispatch();
 
   
@@ -27,19 +24,28 @@ const WeightView = () => {
     return `${month}/${day}`;
   }
 
+  const handleEnterClick = () => {
+    props.history.push("/weightenter");
+  }
+
   return (
+   <div className="weight-view">
     <div className="weight-graph-container">
-      <LineChart
-        className="weight-graph"
-        width={330}
-        height={300}
-        data={weightData}
-        margin={{ top: 5, right: 10, bottom: 5, left: 0 }}
-      >
-        <Line type="monotone" dataKey="weight" stroke="#8884d8" />
-        <XAxis dataKey="date" tickFormatter={dateFormatter} />
-        <YAxis />
-      </LineChart>
+        <LineChart
+          className="weight-graph"
+          width={330}
+          height={300}
+          data={weightData}
+          margin={{ top: 0, right: 15, bottom: 5, left: 0 }}
+        >
+          <Line type="monotone" dataKey="weight" stroke="#8884d8" />
+          <XAxis dataKey="date" tickFormatter={dateFormatter} />
+          <YAxis />
+        </LineChart>
+    </div>
+
+      <button onClick={handleEnterClick}>Enter Weight</button>
+
     </div>
   );
 };
