@@ -63,7 +63,7 @@ const LoginForm = props => {
         <br />
 
         <input
-          type="text"
+          type="password"
           value={credentials.password}
           onChange={e => handleInput(e, "password")}
           placeholder="Password"

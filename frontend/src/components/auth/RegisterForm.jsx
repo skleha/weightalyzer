@@ -71,7 +71,7 @@ const SignUpForm = props => {
         <br />
 
         <input
-          type="text"
+          type="password"
           value={credentials.password}
           onChange={e => handleCredentialChange(e, "password")}
           placeholder="Password"
@@ -79,7 +79,7 @@ const SignUpForm = props => {
         <br />
 
         <input
-          type="text"
+          type="password"
           value={credentials.password2}
           onChange={e => handleCredentialChange(e, "password2")}
           placeholder="Confirm Password"
