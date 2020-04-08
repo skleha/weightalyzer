@@ -43,7 +43,7 @@ const WeightEnter = props => {
         />
         <br />
 
-        <input type="submit" value="Submit" />
+        <button type="submit" onClick={handleSubmit}>Submit</button>
               
       </form>
 

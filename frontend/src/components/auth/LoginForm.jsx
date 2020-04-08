@@ -70,7 +70,7 @@ const LoginForm = props => {
         />
         <br />
 
-        <input type="submit" value="Login" />
+        <button type="submit" onClick={handleSubmit}>Login</button>
         
         <div className="auth-div">Did you need to <Link to="/register">register</Link>?</div>
 
