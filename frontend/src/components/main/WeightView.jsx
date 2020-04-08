@@ -10,12 +10,22 @@ const WeightView = props => {
     const sorted = Object.values(state.weights);
     return sorted.sort((a,b) => a.date - b.date)
   });
+  
+  // const low = weightData[0].weight;
+  // const high = weightData[weightData.length - 1].weight;
+
   const dispatch = useDispatch();
 
   
   useEffect(() => {
-    dispatch(fetchWeights(id));
-  }, [dispatch, id]); // Don't know why I need dispatch and id in dependency array
+
+    const populateState = async () => {
+      await dispatch(fetchWeights(id));  
+    }
+
+    populateState();
+    
+  }, []);
 
   const dateFormatter = date => {
     const newDate = new Date(date);
@@ -33,10 +43,10 @@ const WeightView = props => {
     <div className="weight-graph-container">
         <LineChart
           className="weight-graph"
-          width={330}
+          width={350}
           height={300}
           data={weightData}
-          margin={{ top: 0, right: 15, bottom: 5, left: 0 }}
+          margin={{ top: 0, right: 30, bottom: 5, left: 0 }}
         >
           <Line type="monotone" dataKey="weight" stroke="#8884d8" />
           <XAxis dataKey="date" tickFormatter={dateFormatter} />
