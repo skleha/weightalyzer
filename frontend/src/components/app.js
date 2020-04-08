@@ -39,7 +39,7 @@ const App = () => {
 
   return (
     <div>
-      <div className="header-title">Weight Tracker v1.0</div>
+      <div className="header-title">Weightalyzer v1.0</div>
       <Switch>
         <AuthRoute exact path="/" component={Splash} />
         <AuthRoute exact path="/register" component={SignUpForm} />
