@@ -4,28 +4,30 @@ import { LineChart, Line, XAxis, YAxis } from 'recharts';
 import { fetchWeights } from "../../actions/weight_actions";
 
 const WeightView = props => {
+
+  const id = useSelector((state) => state.session.user.id);
+  const dispatch = useDispatch();
   
-  const id = useSelector(state => state.session.user.id);
+  useEffect(() => {
+    dispatch(fetchWeights(id));
+  }, [dispatch, id]);
+
   const weightData = useSelector(state => {
     const sorted = Object.values(state.weights);
     return sorted.sort((a,b) => a.date - b.date)
   });
-  
-  // const low = weightData[0].weight;
-  // const high = weightData[weightData.length - 1].weight;
 
-  const dispatch = useDispatch();
+  let dataMin = Infinity;
+  let dataMax = -Infinity;
 
-  
-  useEffect(() => {
+  if (weightData.length) {
 
-    const populateState = async () => {
-      await dispatch(fetchWeights(id));  
-    }
-
-    populateState();
+    weightData.forEach(data => {
+      if (data.weight < dataMin) dataMin = data.weight;
+      if (data.weight > dataMax) dataMax = data.weight;
+    })
     
-  }, []);
+  }
 
   const dateFormatter = date => {
     const newDate = new Date(date);
@@ -50,7 +52,7 @@ const WeightView = props => {
         >
           <Line type="monotone" dataKey="weight" stroke="#8884d8" />
           <XAxis dataKey="date" tickFormatter={dateFormatter} />
-          <YAxis />
+          <YAxis type="number" domain={[dataMin - 10, dataMax + 10]} />
         </LineChart>
     </div>
 
