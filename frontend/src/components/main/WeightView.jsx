@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { LineChart, Line, XAxis, YAxis } from 'recharts';
 import { fetchWeights } from "../../util/weight_api_util";
 import * as dataParse from "../../helperFuncs/dataParse";
@@ -7,6 +7,7 @@ import * as dataParse from "../../helperFuncs/dataParse";
 const WeightView = props => {
 
   const id = useSelector((state) => state.session.user.id);
+  // const reduxData = useSelector((state) => state.session.weight)
   const [weightData, setWeightData] = useState([]);
   
   useEffect(() => {

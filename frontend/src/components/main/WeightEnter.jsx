@@ -1,34 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchWeights } from "../../util/weight_api_util";
-import { createWeight } from "../../actions/weight_actions";
+// import { fetchWeights } from "../../util/weight_api_util";
+import { fetchWeights, createWeight } from "../../actions/weight_actions";
 import * as dataParse from "../../helperFuncs/dataParse";
 
 const WeightEnter = props => {
 
   const id = useSelector(state => state.session.user.id);
   const dispatch = useDispatch();
-
-  const [newWeightData, setNewWeightData] = useState({
-    userId: id,
-    weight: "",
-  });
-
+  const [newWeightData, setNewWeightData] = useState({userId: id, weight: ""});
   const [weightData, setWeightData] = useState([]);
+
 
   useEffect(() => {
     const populateState = async () => {
-      const res = await fetchWeights(id);
-      const sorted = Object.values(res.data);
-      sorted.sort((a, b) => a.date - b.date);
-      setWeightData(sorted);
+      await dispatch(fetchWeights());
+      // const sorted = Object.values(res.data);
+      // sorted.sort((a, b) => a.date - b.date);
+      // setWeightData(sorted);
     };
 
     populateState();
-  }, [id]);
+  }, [dispatch, id]);
 
-  
-  const [lastWeight, nextToLastWeight] = dataParse.lastTwoWeights(weightData);
+
+  // const [lastWeight, nextToLastWeight] = dataParse.lastTwoWeights(weightData);
 
 
   const handleInput = (e, field) => {

@@ -4,7 +4,8 @@ import Root from './components/root';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
-import { logout } from "./actions/session_actions";
+import { logout } from './actions/session_actions';
+import { fetchWeights } from './actions/weight_actions'; 
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,6 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore({});
   }
+
+  window.fetchWeights = fetchWeights;
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
+  
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
