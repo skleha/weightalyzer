@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchWeights, createWeight } from "../../actions/weight_actions";
+import { fetchWeights } from "../../util/weight_api_util";
+import { createWeight } from "../../actions/weight_actions";
 
 const WeightEnter = props => {
 
@@ -12,6 +13,26 @@ const WeightEnter = props => {
     weight: "",
   });
 
+  const [weightData, setWeightData] = useState([]);
+
+  useEffect(() => {
+    const populateState = async () => {
+      const res = await fetchWeights(id);
+      const sorted = Object.values(res.data);
+      sorted.sort((a, b) => a.date - b.date);
+      setWeightData(sorted);
+    };
+
+    populateState();
+  }, [id]);
+
+  let lastWeight;
+  let nextToLastWeight;
+
+  if (weightData.length) {
+    lastWeight = weightData[weightData.length - 1].weight;
+    nextToLastWeight = weightData[weightData.length - 1].weight;
+  }
   
 
   const handleInput = (e, field) => {
