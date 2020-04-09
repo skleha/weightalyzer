@@ -1,21 +1,24 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { LineChart, Line, XAxis, YAxis } from 'recharts';
-import { fetchWeights } from "../../actions/weight_actions";
+import { fetchWeights } from "../../util/weight_api_util";
 
 const WeightView = props => {
 
   const id = useSelector((state) => state.session.user.id);
-  const dispatch = useDispatch();
+  const [weightData, setWeightData] = useState([]);
   
   useEffect(() => {
-    dispatch(fetchWeights(id));
-  }, [dispatch, id]);
+    const populateState = async () => {
+      const res = await fetchWeights(id);
+      const sorted = Object.values(res.data);
+      sorted.sort((a, b) => a.date - b.date);
+      setWeightData(sorted);
+    }
 
-  const weightData = useSelector(state => {
-    const sorted = Object.values(state.weights);
-    return sorted.sort((a,b) => a.date - b.date)
-  });
+    populateState();
+
+  }, [id]);
 
   let dataMin = Infinity;
   let dataMax = -Infinity;
