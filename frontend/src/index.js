@@ -5,7 +5,8 @@ import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
-import { fetchWeights } from './actions/weight_actions'; 
+import { fetchWeights } from './actions/weight_actions';
+// import { fetchWeights } from './util/weight_api_util';
 
 
 document.addEventListener('DOMContentLoaded', () => {
