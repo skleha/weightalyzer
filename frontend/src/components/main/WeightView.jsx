@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { LineChart, Line, XAxis, YAxis } from 'recharts';
 import { fetchWeights } from "../../util/weight_api_util";
+import * as dataParse from "../../helperFuncs/dataParse";
 
 const WeightView = props => {
 
@@ -20,24 +21,8 @@ const WeightView = props => {
 
   }, [id]);
 
-  let dataMin = Infinity;
-  let dataMax = -Infinity;
+  const [dataMin, dataMax] = dataParse.maxAndMin(weightData);
 
-  if (weightData.length) {
-
-    weightData.forEach(data => {
-      if (data.weight < dataMin) dataMin = data.weight;
-      if (data.weight > dataMax) dataMax = data.weight;
-    })
-    
-  }
-
-  const dateFormatter = date => {
-    const newDate = new Date(date);
-    const month = newDate.getMonth() + 1;
-    const day = newDate.getDate();
-    return `${month}/${day}`;
-  }
 
   const handleEnterClick = () => {
     props.history.push("/weightenter");
@@ -54,7 +39,7 @@ const WeightView = props => {
           margin={{ top: 0, right: 30, bottom: 5, left: 0 }}
         >
           <Line type="monotone" dataKey="weight" stroke="#8884d8" />
-          <XAxis dataKey="date" tickFormatter={dateFormatter} />
+          <XAxis dataKey="date" tickFormatter={dataParse.dateFormatter} />
           <YAxis type="number" domain={[dataMin - 10, dataMax + 10]} />
         </LineChart>
     </div>
