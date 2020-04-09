@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { LineChart, Line, XAxis, YAxis } from 'recharts';
 import { fetchWeights } from "../../util/weight_api_util";
 import * as dataParse from "../../helperFuncs/dataParse";

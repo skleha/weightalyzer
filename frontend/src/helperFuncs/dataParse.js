@@ -1,10 +1,7 @@
-
 export const maxAndMin = weightData => {
-  
   let dataMin = Infinity;
   let dataMax = -Infinity;
 
-  console.log(weightData);
   weightData.forEach((data) => {
     if (data.weight < dataMin) dataMin = data.weight;
     if (data.weight > dataMax) dataMax = data.weight;
@@ -12,6 +9,22 @@ export const maxAndMin = weightData => {
   
   return [dataMin, dataMax];
 }
+
+
+export const lastTwoWeights = (weightData) => {
+  let lastWeight = null, nextToLastWeight = null;
+  
+  if (weightData.length > 0) {
+    lastWeight = weightData[weightData.length - 1].weight;
+  }
+
+  if (weightData.length > 1) {
+    nextToLastWeight = weightData[weightData.length - 1].weight;
+  }
+
+  return [lastWeight, nextToLastWeight];
+};
+
 
 export const dateFormatter = date => {
   const newDate = new Date(date);

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchWeights } from "../../util/weight_api_util";
 import { createWeight } from "../../actions/weight_actions";
+import * as dataParse from "../../helperFuncs/dataParse";
 
 const WeightEnter = props => {
 
@@ -26,14 +27,9 @@ const WeightEnter = props => {
     populateState();
   }, [id]);
 
-  let lastWeight;
-  let nextToLastWeight;
-
-  if (weightData.length) {
-    lastWeight = weightData[weightData.length - 1].weight;
-    nextToLastWeight = weightData[weightData.length - 1].weight;
-  }
   
+  const [lastWeight, nextToLastWeight] = dataParse.lastTwoWeights(weightData);
+
 
   const handleInput = (e, field) => {
     let data = e.target.value;
