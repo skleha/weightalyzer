@@ -1,35 +1,40 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { createWeight } from "../../actions/weight_actions";
+import { fetchWeights, createWeight } from "../../actions/weight_actions";
 
 const WeightEnter = props => {
 
   const id = useSelector(state => state.session.user.id);
   const dispatch = useDispatch();
 
-  const [weightData, setWeightData] = useState({
+  const [newWeightData, setNewWeightData] = useState({
     userId: id,
     weight: "",
   });
 
+  
+
   const handleInput = (e, field) => {
     let data = e.target.value;
 
-    setWeightData(currentState => ({
+    setNewWeightData(currentState => ({
       ...currentState,
       [field]: data
     }));
   };
 
+
   const handleSubmit = async e => {
     e.preventDefault();
-    await dispatch(createWeight(weightData));
+    await dispatch(createWeight(newWeightData));
     props.history.push("/weightview");
   };
+
 
   const handleViewClick = () => {
     props.history.push("/weightview");
   }
+
 
   return (
     <div className="weight-view">
@@ -37,7 +42,7 @@ const WeightEnter = props => {
 
         <input
           type="text"
-          value={weightData.weight}
+          value={newWeightData.weight}
           onChange={e => handleInput(e, "weight")}
           placeholder="Enter Weight"
         />
