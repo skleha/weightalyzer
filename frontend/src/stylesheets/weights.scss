@@ -19,3 +19,17 @@
   justify-content: center;
 }
 
+.weight-enter-grid {
+  font-size: 21px;
+  display: grid;
+  justify-self: center;
+  align-items: center;
+  grid-template-columns: 120px 120px;
+  grid-template-rows: 30px 30px 10px 30px 30px;
+  column-gap: 10px;
+}
+
+.weight-enter-grid div {
+  text-align: center;
+}
+
