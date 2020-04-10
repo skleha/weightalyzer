@@ -5,13 +5,12 @@ import * as dataParse from "../../helperFuncs/dataParse";
 
 const WeightView = props => {
 
-  const id = useSelector(state => state.session.user.id);
   const weightsFromStore = useSelector(state => Object.values(state.weights));
   const [weightData, setWeightData] = useState([]);
   
   useEffect(() => {
     setWeightData(weightsFromStore);
-  }, []);
+  }, [weightsFromStore]);
 
   const [dataMin, dataMax] = dataParse.maxAndMin(weightData);
 
