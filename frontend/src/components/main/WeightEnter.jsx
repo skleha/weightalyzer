@@ -11,16 +11,18 @@ const WeightEnter = props => {
   const [newWeightData, setNewWeightData] = useState({userId: id, weight: ""});
   
   useEffect(() => {
-    const populateState = () => {
+    const populateStore = () => {
       dispatch(fetchWeights(id));
     };
 
-    populateState();
+    populateStore();
   }, [dispatch, id]);
 
   const [lastWeight, nextToLastWeight] = dataParse.lastTwoWeights(weightData);
   const [lastDate, nextToLastDate] = dataParse.lastTwoDates(weightData);
   const difference = dataParse.getDifference(lastWeight, nextToLastWeight);
+  const rollingFive = dataParse.getRollingFive(weightData);
+
 
   const handleInput = (e, field) => {
     let data = e.target.value;
