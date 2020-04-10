@@ -45,27 +45,32 @@ const WeightEnter = props => {
 
   return (
     <div className="weight-view">
+      <div className="weight-enter-grid">
+        
+        <div>Last Weight</div>
+        <div>Date</div>
 
-      <form className="weight-form" onSubmit={e => handleSubmit(e)}>
+        <div>{lastWeight}</div>
+        <div>{difference}</div>
+      </div>
 
+      <form className="weight-form" onSubmit={(e) => handleSubmit(e)}>
         <input
           type="text"
           value={newWeightData.weight}
-          onChange={e => handleInput(e, "weight")}
+          onChange={(e) => handleInput(e, "weight")}
           placeholder="Enter Weight"
         />
         <br />
 
-        <button type="submit" onClick={handleSubmit}>Submit</button>
-              
+        <button type="submit" onClick={handleSubmit}>
+          Submit
+        </button>
       </form>
 
       <button onClick={handleViewClick}>Go To View</button>
-
     </div>
-
-
-  )
+  );
 }
 
 export default WeightEnter;
