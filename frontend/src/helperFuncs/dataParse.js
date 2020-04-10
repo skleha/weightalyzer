@@ -42,12 +42,10 @@ export const lastTwoDates = weightData => {
 
 
 export const getDifference = (weightOne, weightTwo) => {
-  if (weightOne && weightTwo) {
-    
+  if (weightOne && weightTwo) {    
     const difference = weightOne - weightTwo;
     const signChar = (difference > 0) ? "+" : "";    
     return `${signChar}${difference.toFixed(1)}`
-
   } else {
     return "-";
   }
@@ -59,5 +57,3 @@ export const dateFormatter = date => {
   const day = newDate.getDate();
   return `${month}/${day}`;
 };
-
-
