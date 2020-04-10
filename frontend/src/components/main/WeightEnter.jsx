@@ -47,17 +47,18 @@ const WeightEnter = props => {
   return (
     <div className="weight-view">
       <div className="weight-enter-grid">
-        
         <div>Last Weight</div>
         <div>Date</div>
         <div>{lastWeight}</div>
         <div>{lastDate}</div>
 
+        <div></div>
+        <div></div>
+
         <div>Prev Weight</div>
         <div>Change (lbs)</div>
         <div>{nextToLastWeight}</div>
         <div>{difference}</div>
-
       </div>
 
       <form className="weight-form" onSubmit={(e) => handleSubmit(e)}>
@@ -65,7 +66,7 @@ const WeightEnter = props => {
           type="text"
           value={newWeightData.weight}
           onChange={(e) => handleInput(e, "weight")}
-          placeholder="Enter Weight"
+          placeholder="Enter New Weight"
         />
         <br />
 
