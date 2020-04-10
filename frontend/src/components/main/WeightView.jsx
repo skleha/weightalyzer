@@ -1,26 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { LineChart, Line, XAxis, YAxis } from 'recharts';
-import { fetchWeights } from "../../util/weight_api_util";
 import * as dataParse from "../../helperFuncs/dataParse";
 
 const WeightView = props => {
 
-  const id = useSelector((state) => state.session.user.id);
-  // const reduxData = useSelector((state) => state.session.weight)
+  const id = useSelector(state => state.session.user.id);
+  const weightsFromStore = useSelector(state => Object.values(state.weights));
   const [weightData, setWeightData] = useState([]);
   
   useEffect(() => {
-    const populateState = async () => {
-      const res = await fetchWeights(id);
-      const sorted = Object.values(res.data);
-      sorted.sort((a, b) => a.date - b.date);
-      setWeightData(sorted);
-    }
-
-    populateState();
-
-  }, [id]);
+    setWeightData(weightsFromStore);
+  }, []);
 
   const [dataMin, dataMax] = dataParse.maxAndMin(weightData);
 
