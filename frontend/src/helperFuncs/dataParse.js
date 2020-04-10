@@ -19,12 +19,19 @@ export const lastTwoWeights = (weightData) => {
   }
 
   if (weightData.length > 1) {
-    nextToLastWeight = weightData[weightData.length - 1].weight;
+    nextToLastWeight = weightData[weightData.length - 2].weight;
   }
 
   return [lastWeight, nextToLastWeight];
 };
 
+export const getDifference = (weightOne, weightTwo) => {
+  if (weightOne && weightTwo) {
+    return weightOne - weightTwo;
+  } else {
+    return "-";
+  }
+}
 
 export const dateFormatter = date => {
   const newDate = new Date(date);

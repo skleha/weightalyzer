@@ -18,10 +18,8 @@ const WeightEnter = props => {
     populateState();
   }, [dispatch, id]);
 
-
   const [lastWeight, nextToLastWeight] = dataParse.lastTwoWeights(weightData);
-  console.log(lastWeight, nextToLastWeight);
-
+  const difference = dataParse.getDifference(lastWeight, nextToLastWeight);
 
   const handleInput = (e, field) => {
     let data = e.target.value;
@@ -47,6 +45,7 @@ const WeightEnter = props => {
 
   return (
     <div className="weight-view">
+
       <form className="weight-form" onSubmit={e => handleSubmit(e)}>
 
         <input
