@@ -19,6 +19,7 @@ const WeightEnter = props => {
   }, [dispatch, id]);
 
   const [lastWeight, nextToLastWeight] = dataParse.lastTwoWeights(weightData);
+  const [lastDate, nextToLastDate] = dataParse.lastTwoDates(weightData);
   const difference = dataParse.getDifference(lastWeight, nextToLastWeight);
 
   const handleInput = (e, field) => {
@@ -49,9 +50,14 @@ const WeightEnter = props => {
         
         <div>Last Weight</div>
         <div>Date</div>
-
         <div>{lastWeight}</div>
+        <div>{lastDate}</div>
+
+        <div>Prev Weight</div>
+        <div>Change (lbs)</div>
+        <div>{nextToLastWeight}</div>
         <div>{difference}</div>
+
       </div>
 
       <form className="weight-form" onSubmit={(e) => handleSubmit(e)}>

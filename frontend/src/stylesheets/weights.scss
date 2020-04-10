@@ -20,7 +20,12 @@
 }
 
 .weight-enter-grid {
+  font-size: 22px;
   display: grid;
-  grid-template-columns: 100px 100px;
+  grid-template-columns: 120px 120px;
+}
+
+.weight-enter-grid div {
+  text-align: center;
 }
 
