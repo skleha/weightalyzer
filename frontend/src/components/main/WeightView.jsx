@@ -14,7 +14,6 @@ const WeightView = props => {
 
   const [dataMin, dataMax] = dataParse.maxAndMin(weightData);
 
-
   const handleEnterClick = () => {
     props.history.push("/weightenter");
   }
