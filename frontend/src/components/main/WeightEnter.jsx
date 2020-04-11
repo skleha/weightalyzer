@@ -7,20 +7,26 @@ const WeightEnter = props => {
 
   const id = useSelector(state => state.session.user.id);
   const weightData = useSelector(state => Object.values(state.weights));
-  const dispatch = useDispatch();
   const [newWeightData, setNewWeightData] = useState({userId: id, weight: ""});
+  const dispatch = useDispatch();
   
   useEffect(() => {
-    const populateState = () => {
-      dispatch(fetchWeights(id));
-    };
+      
+    const populateStore = async () => {
+      await dispatch(fetchWeights(id));
+      
 
-    populateState();
+    }
+    
+    populateStore();
+
   }, [dispatch, id]);
 
   const [lastWeight, nextToLastWeight] = dataParse.lastTwoWeights(weightData);
   const [lastDate, nextToLastDate] = dataParse.lastTwoDates(weightData);
   const difference = dataParse.getDifference(lastWeight, nextToLastWeight);
+  const rollingFive = dataParse.getRollingFive(weightData);
+
 
   const handleInput = (e, field) => {
     let data = e.target.value;

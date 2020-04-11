@@ -25,6 +25,7 @@ export const lastTwoWeights = weightData => {
   return [lastWeight, nextToLastWeight];
 };
 
+
 export const lastTwoDates = weightData => {
   let lastDate = null,
     nextToLastDate = null;
@@ -50,6 +51,37 @@ export const getDifference = (weightOne, weightTwo) => {
     return "-";
   }
 }
+
+export const getRollingFive = weightData => {
+  if (weightData.length < 5) return null;
+
+  const dataSet = [];
+  const lastFive = [];
+
+  for (let i = 0; i < weightData.length; i++) {
+    let newPoint = {};
+    newPoint._id = weightData[i]._id;
+    newPoint.date = weightData[i].date;
+    lastFive.push(weightData[i].weight);
+    let newWeight;
+
+    if (lastFive.length < 5) {
+      newPoint.weight = null;
+    } else if (lastFive.length === 5) {
+      newWeight = (lastFive.reduce((acc, val) => acc + val)) / 5;
+      newPoint.weight = newWeight;
+    } else {
+      lastFive.shift();
+      newWeight = (lastFive.reduce((acc, val) => acc + val)) / 5;
+      newPoint.weight = newWeight;      
+    }
+
+    dataSet.push(newWeight);
+  }
+
+  return dataSet;
+}
+
 
 export const dateFormatter = date => {
   const newDate = new Date(date);

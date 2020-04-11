@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import errorsReducer from './errors_reducer';
-import sessionReducer from './session_reducer';
-import weightsReducer from './weights_reducer';
+import errorsReducer from './errors/errorsReducer';
+import sessionReducer from './session/sessionReducer';
+import weightsReducer from './weights/observedReducer';
 
 const RootReducer = combineReducers({
   weights: weightsReducer,
