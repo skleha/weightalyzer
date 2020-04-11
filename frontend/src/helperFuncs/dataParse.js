@@ -60,6 +60,7 @@ export const getRollingFive = weightData => {
 
   for (let i = 0; i < weightData.length; i++) {
     let newPoint = {};
+    newPoint._id = weightData[i]._id;
     newPoint.date = weightData[i].date;
     lastFive.push(weightData[i].weight);
     let newWeight;
