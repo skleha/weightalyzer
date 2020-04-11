@@ -1,6 +1,6 @@
-import { RECEIVE_ALL_WEIGHTS, RECEIVE_WEIGHT } from '../actions/weight_actions';
+import { RECEIVE_ALL_WEIGHTS, RECEIVE_WEIGHT } from '../../actions/weight_actions';
 
-const weightsReducer = (oldState = [], action) => {
+const observedWeightsReducer = (oldState = [], action) => {
   Object.freeze(oldState);
   let newState = Object.assign({}, oldState);
 
@@ -22,4 +22,4 @@ const weightsReducer = (oldState = [], action) => {
   }
 }
 
-export default weightsReducer;
+export default observedWeightsReducer;
