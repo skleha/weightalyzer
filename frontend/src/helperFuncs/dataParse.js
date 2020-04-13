@@ -76,7 +76,7 @@ export const getRollingFive = weightData => {
       newPoint.weight = newWeight;      
     }
 
-    dataSet.push(newWeight);
+    dataSet.push(newPoint);
   }
 
   return dataSet;
