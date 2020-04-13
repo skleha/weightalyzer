@@ -14,12 +14,6 @@ const receiveWeight = weight => ({
   weight
 })
 
-export const receiveRollingFive = rollingFive => ({
-  type: 'RECEIVE_ROLLING_FIVE',
-  rollingFive
-})
-
-
 export const fetchWeights = userId => dispatch => (
   WeightAPIUtil.fetchWeights(userId)
     .then(weights => dispatch(receiveWeights(weights)))
