@@ -1,12 +1,12 @@
-import { RECEIVE_ALL_WEIGHTS } from '../../actions/weight_actions';
+import { RECEIVE_SERIES } from '../../actions/seriesActions';
 
-const rollingFiveReducer = (oldState = [], action) => {
+const seriesReducer = (oldState = [], action) => {
   Object.freeze(oldState);
   let newState = Object.assign({}, oldState);
 
   switch (action.type) {
 
-    case RECEIVE_ALL_WEIGHTS:
+    case RECEIVE_SERIES:
       action.weights.data.forEach(weight => {
         newState[weight._id] = weight
       })
@@ -18,4 +18,4 @@ const rollingFiveReducer = (oldState = [], action) => {
   }
 }
 
-export default rollingFiveReducer;
+export default seriesReducer;
