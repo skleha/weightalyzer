@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import observedWeightsReducer from './observedReducer';
+import observedReducer from './observedReducer';
 import seriesReducer from './seriesReducer';
 
 const weightsReducer = combineReducers({
-  observed: observedWeightsReducer,
+  observed: observedReducer,
   series: seriesReducer,
 });
 

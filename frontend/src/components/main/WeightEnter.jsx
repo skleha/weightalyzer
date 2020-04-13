@@ -24,9 +24,6 @@ const WeightEnter = props => {
   const [lastDate, nextToLastDate] = dataParse.lastTwoDates(weightData);
   const difference = dataParse.getDifference(lastWeight, nextToLastWeight);
   const rollingFive = dataParse.getRollingFive(weightData);
-  console.log(rollingFive);
-
-  
 
   const handleInput = (e, field) => {
     let data = e.target.value;
