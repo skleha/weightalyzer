@@ -1,6 +1,10 @@
 export const RECEIVE_SERIES = 'RECEIVE_SERIES';
 
-export const receiveRollingFive = rollingFive => ({
+const receiveSeries = series => ({
   type: RECEIVE_SERIES,
   series
 });
+
+export const storeSeries = series => dispatch => (
+  dispatch(receiveSeries(series))
+);
