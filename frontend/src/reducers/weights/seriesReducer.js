@@ -7,8 +7,8 @@ const seriesReducer = (oldState = [], action) => {
   switch (action.type) {
 
     case RECEIVE_SERIES:
-      action.weights.data.forEach(weight => {
-        newState[weight._id] = weight
+      action.series.forEach(point => {
+        newState[point._id] = point
       })
       return newState;
 
