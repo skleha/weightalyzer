@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchWeights, createWeight } from "../../actions/weight_actions";
+import { fetchWeights } from "../../util/weight_api_util";
+
+import { createWeight } from "../../actions/weight_actions";
 import { storeSeries } from "../../actions/seriesActions";
 import * as dataParse from "../../helperFuncs/dataParse";
 
@@ -16,20 +18,17 @@ const WeightEnter = props => {
   const dispatch = useDispatch();
   
 
-
   useEffect(() => {
-    dispatch(fetchWeights(id));
+    
+    const populateStore = async () => {
+      const response = await fetchWeights(id);
+      dispatch(response);
+    }
+    
+    populateStore();
     
     
   }, [dispatch, id]);
-
-  // useEffect(() => {
-  //   if (rollingFive !== null) {
-  //     dispatch(storeSeries(rollingFive));
-  //   }
-
-  // }, [rollingFive, dispatch, id])
-
 
 
   const handleInput = (e, field) => {
