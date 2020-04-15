@@ -23,12 +23,12 @@ const WeightEnter = props => {
     
   }, [dispatch, id]);
 
-  useEffect(() => {
-    if (rollingFive !== null) {
-      dispatch(storeSeries(rollingFive));
-    }
+  // useEffect(() => {
+  //   if (rollingFive !== null) {
+  //     dispatch(storeSeries(rollingFive));
+  //   }
 
-  }, [rollingFive, dispatch, id])
+  // }, [rollingFive, dispatch, id])
 
 
 
