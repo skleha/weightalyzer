@@ -14,7 +14,6 @@ const receiveWeight = weight => ({
   weight
 })
 
-
 export const fetchWeights = userId => dispatch => (
   WeightAPIUtil.fetchWeights(userId)
     .then(weights => dispatch(receiveWeights(weights)))
