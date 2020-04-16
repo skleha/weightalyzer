@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchWeights } from "../../util/weight_api_util";
-
-import { createWeight } from "../../actions/weight_actions";
-import { storeSeries } from "../../actions/seriesActions";
+import { fetchWeights, createWeight } from "../../actions/weight_actions";
 import * as dataParse from "../../helperFuncs/dataParse";
 
 const WeightEnter = props => {
@@ -11,23 +8,22 @@ const WeightEnter = props => {
   const id = useSelector(state => state.session.user.id);
   const weightData = useSelector(state => Object.values(state.weights.observed));
   const [newWeightData, setNewWeightData] = useState({userId: id, weight: ""});
-  const [lastWeight, nextToLastWeight] = dataParse.lastTwoWeights(weightData);
-  const [lastDate] = dataParse.lastTwoDates(weightData);
-  const difference = dataParse.getDifference(lastWeight, nextToLastWeight);
+  const [lastWeight, nextToLastWeight] = dataParse.getLastTwoWeights(weightData);
+  const lastDate = dataParse.getLastDate(weightData);
+  const currDifference = dataParse.getDifference(lastWeight, nextToLastWeight);
   const rollingFive = dataParse.getRollingFive(weightData);
+  // const lastFivePoint = rollingFive[rolling]
   const dispatch = useDispatch();
   
 
   useEffect(() => {
     
-    const populateStore = async () => {
-      const response = await fetchWeights(id);
-      dispatch(response);
+    const populateStore = () => {
+      dispatch(fetchWeights(id));
     }
     
     populateStore();
-    
-    
+
   }, [dispatch, id]);
 
 
@@ -67,7 +63,18 @@ const WeightEnter = props => {
         <div>Prev Weight</div>
         <div>Change (lbs)</div>
         <div>{nextToLastWeight}</div>
-        <div>{difference}</div>
+        <div>{currDifference}</div>
+
+        <div></div>
+        <div></div>
+        
+        <div>Last 5 Avg.</div>
+        <div>Diff (lbs)</div>
+        <div></div>
+        <div></div>
+        
+
+
       </div>
 
       <form className="weight-form" onSubmit={(e) => handleSubmit(e)}>
