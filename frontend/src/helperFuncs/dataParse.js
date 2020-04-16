@@ -41,10 +41,10 @@ export const getLastWeight = weightData => {
   let lastWeight = null;
 
   if (weightData.length > 0) {
-    lastDate = weightData[weightData.length - 1].weight;
+    lastWeight = weightData[weightData.length - 1].weight;
   }
 
-  return dateFormatter(lastWeight);
+  return lastWeight;
 };
 
 

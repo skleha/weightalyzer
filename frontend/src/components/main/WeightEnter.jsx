@@ -9,10 +9,11 @@ const WeightEnter = props => {
   const weightData = useSelector(state => Object.values(state.weights.observed));
   const [newWeightData, setNewWeightData] = useState({userId: id, weight: ""});
   const [lastWeight, nextToLastWeight] = dataParse.getLastTwoWeights(weightData);
-  const lastDate = dataParse.getLastDate(weightData);
   const currDifference = dataParse.getDifference(lastWeight, nextToLastWeight);
+  const lastDate = dataParse.getLastDate(weightData);
   const rollingFive = dataParse.getRollingFive(weightData);
-  // const lastFivePoint = rollingFive[rolling]
+  const lastFivePoint = rollingFive ? dataParse.getLastWeight(rollingFive) : null;
+  const rollingFiveDiff = dataParse.getDifference(lastWeight, lastFivePoint);
   const dispatch = useDispatch();
   
 
@@ -70,11 +71,9 @@ const WeightEnter = props => {
         
         <div>Last 5 Avg.</div>
         <div>Diff (lbs)</div>
-        <div></div>
-        <div></div>
+        <div>{lastFivePoint}</div>
+        <div>{rollingFiveDiff}</div>
         
-
-
       </div>
 
       <form className="weight-form" onSubmit={(e) => handleSubmit(e)}>
