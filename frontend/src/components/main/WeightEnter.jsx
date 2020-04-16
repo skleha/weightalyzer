@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchWeights, createWeight } from "../../actions/weight_actions";
-import { storeSeries } from "../../actions/seriesActions";
 import * as dataParse from "../../helperFuncs/dataParse";
 
 const WeightEnter = props => {
@@ -9,27 +8,24 @@ const WeightEnter = props => {
   const id = useSelector(state => state.session.user.id);
   const weightData = useSelector(state => Object.values(state.weights.observed));
   const [newWeightData, setNewWeightData] = useState({userId: id, weight: ""});
-  const [lastWeight, nextToLastWeight] = dataParse.lastTwoWeights(weightData);
-  const [lastDate] = dataParse.lastTwoDates(weightData);
-  const difference = dataParse.getDifference(lastWeight, nextToLastWeight);
+  const [lastWeight, nextToLastWeight] = dataParse.getLastTwoWeights(weightData);
+  const currDifference = dataParse.getDifference(lastWeight, nextToLastWeight);
+  const lastDate = dataParse.getLastDate(weightData);
   const rollingFive = dataParse.getRollingFive(weightData);
+  const lastFivePoint = rollingFive ? dataParse.getLastWeight(rollingFive) : null;
+  const rollingFiveDiff = dataParse.getDifference(lastWeight, lastFivePoint);
   const dispatch = useDispatch();
   
 
-
   useEffect(() => {
-    dispatch(fetchWeights(id));
     
+    const populateStore = () => {
+      dispatch(fetchWeights(id));
+    }
     
+    populateStore();
+
   }, [dispatch, id]);
-
-  // useEffect(() => {
-  //   if (rollingFive !== null) {
-  //     dispatch(storeSeries(rollingFive));
-  //   }
-
-  // }, [rollingFive, dispatch, id])
-
 
 
   const handleInput = (e, field) => {
@@ -68,7 +64,16 @@ const WeightEnter = props => {
         <div>Prev Weight</div>
         <div>Change (lbs)</div>
         <div>{nextToLastWeight}</div>
-        <div>{difference}</div>
+        <div>{currDifference}</div>
+
+        <div></div>
+        <div></div>
+        
+        <div>Last 5 Avg.</div>
+        <div>Diff (lbs)</div>
+        <div>{lastFivePoint}</div>
+        <div>{rollingFiveDiff}</div>
+        
       </div>
 
       <form className="weight-form" onSubmit={(e) => handleSubmit(e)}>

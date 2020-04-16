@@ -5,11 +5,19 @@ import * as dataParse from "../../helperFuncs/dataParse";
 
 const WeightView = props => {
 
-  const weightsFromStore = useSelector(state => Object.values(state.weights.observed));
-  const [weightData, setWeightData] = useState([]);
+  const weightData = useSelector(state => Object.values(state.weights.observed));
+  const [observedWeights, setObservedWeights] = useState([]);
+  
+  const seriesData = dataParse.getRollingFive(weightData);
+  
+
   
   useEffect(() => {
-    setWeightData(weightsFromStore);
+  
+    
+  
+    setObservedWeights(weightData);
+  
   }, []);
 
   const [dataMin, dataMax] = dataParse.maxAndMin(weightData);
@@ -25,7 +33,7 @@ const WeightView = props => {
           className="weight-graph"
           width={350}
           height={300}
-          data={weightData}
+          data={observedWeights}
           margin={{ top: 0, right: 30, bottom: 5, left: 0 }}
         >
           <Line type="monotone" dataKey="weight" stroke="#8884d8" />

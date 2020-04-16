@@ -11,7 +11,7 @@ export const maxAndMin = weightData => {
 }
 
 
-export const lastTwoWeights = weightData => {
+export const getLastTwoWeights = weightData => {
   let lastWeight = null, nextToLastWeight = null;
   
   if (weightData.length > 0) {
@@ -26,19 +26,25 @@ export const lastTwoWeights = weightData => {
 };
 
 
-export const lastTwoDates = weightData => {
-  let lastDate = null,
-    nextToLastDate = null;
+export const getLastDate = weightData => {
+  let lastDate = null;
 
   if (weightData.length > 0) {
     lastDate = weightData[weightData.length - 1].date;
   }
 
-  if (weightData.length > 1) {
-    nextToLastDate = weightData[weightData.length - 2].date;
+  return dateFormatter(lastDate);
+};
+
+
+export const getLastWeight = weightData => {
+  let lastWeight = null;
+
+  if (weightData.length > 0) {
+    lastWeight = weightData[weightData.length - 1].weight;
   }
 
-  return [lastDate, nextToLastDate].map(date => dateFormatter(date));
+  return lastWeight;
 };
 
 
