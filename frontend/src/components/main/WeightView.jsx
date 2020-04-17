@@ -7,15 +7,11 @@ const WeightView = props => {
 
   const weightData = useSelector(state => Object.values(state.weights.observed));
   const [observedWeights, setObservedWeights] = useState([]);
-  
   const seriesData = dataParse.getRollingFive(weightData);
   
 
   
   useEffect(() => {
-  
-    
-  
     setObservedWeights(weightData);
   
   }, []);
