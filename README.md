@@ -1,12 +1,13 @@
 See the app live [here.](http://weightalyzer.herokuapp.com/)
 
-# Keeper
+# Weightalyzer v 1.0
 
-[Live website!](https://keeper2503.herokuapp.com/#/)
+[Live website should be accessed on your mobile device](http://weightalyzer.herokuapp.com/#/)
 <br></br>
 
 ### Description
-Keeper is a cloud-based, easy-to-use, lightweight note-taking app that allows a user to capture the thoughts, ideas and details of life.  The format is similar to that of Post-it notes.  Notes are displayed on square note tiles, and displayed, along with all other notes, on virtual wall of thoughts, ideas and details.  Users can organize these thoughts using labels, and label links allow for the display of notes with the same label.  Alternatively, a note take can search all notes using a search string.  The note wall is immediately filtered to show the search results. 
+Weightalyzer is a cloud-based, easy-to-use, lightweight weight recording app that allows a user to record their body weight.  After logging in, the user can record a weight.  After recording a weight, the user can then see statics on their weight in both in a table and in a graph.  In this way, a user can monitor progress toward or departure from a targeted or goal weight.  At the moment, the app is designed specifically for use on a mobile device--e.g, after hopping on the scale, the user immediately enters the weight seen on the scale in the app.
+
 <br></br>
 ![demo](https://media.giphy.com/media/RGXQXa62TAkiqiBFci/giphy.gif)
 
