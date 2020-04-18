@@ -89,6 +89,11 @@ export const getRollingFive = weightData => {
 }
 
 
+
+
+
+
+
 export const dateFormatter = date => {
   const newDate = new Date(date);
   const month = newDate.getMonth() + 1;
