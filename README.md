@@ -12,13 +12,11 @@ Weightalyzer is a cloud-based, easy-to-use, lightweight weight recording app tha
 ![demo](https://media.giphy.com/media/RGXQXa62TAkiqiBFci/giphy.gif)
 
 ### Key Features
-  * Secure frontend to backend user authentication using BCrypt.
-  * Users can create, read, update, and delete notes.
-  * Users can create, read, update, and delete labels.
-  * Notes are displayed on a virtual wall of notes.
-  * A label can be applied to a note, e.g a "packing lists" label for a note that is a list of camping gear.
-  * Each displayed note has a title, a body, its labels and action icons that allow the user to add a label or delete the note.
-  * Users can search on a text string; notes are immediately filtered, showing the search result.
+  * Secure frontend to backend user authentication using BCrypt and JSON Web Token.
+  * Users can create a private account.
+  * Users can record a weight; account keeps track of all recorded weights.
+  * Users can see, on weight entry page, current weight, previous weight, and average of last five recorded weights.
+  * Users can see, on weight view page, a graph of their recorded weights as well as a five point moving average of weights.
   
 ### Select Screenshots
 The note tile contains a title, body, any labels assigned to the note, and two action icons.  The two action icons include a tag, which will allow for label assignment and/or creation, and a trashcan, which will delete the note.<br></br>
