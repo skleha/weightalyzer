@@ -51,11 +51,13 @@ The user clicks on a button with text of "close" to close and save the note.
 ```
 
 ### Key Technologies
-  * PostGreSQL
-  * Ruby on Rails
-  * React-Redux
+  * MongoDB
+  * Mongoose
+  * Express
+  * React
+  * Redux
+  
 
 ### Future Implementations
-The development roadmap for keeper includes some form of media attachment to a note.  Users will be able to attach a photo, describe it, and view it, along with text, on the virtual wall of notes.  Additionally, I plan to add collaboration, where a user can give another user read/write access to a note.  In this way, a note can be shared between two users and modified by either user.
 
 
