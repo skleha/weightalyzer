@@ -1,6 +1,6 @@
 # Weightalyzer v 1.0
 
-The [live website](http://weightalyzer.herokuapp.com/#/) should be accessed on your mobile device
+The [live website](http://weightalyzer.herokuapp.com/#/) is designed for viewing on your mobile device.
 <br></br>
 
 ### Description
