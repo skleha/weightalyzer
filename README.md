@@ -2,7 +2,7 @@ See the app live [here.](http://weightalyzer.herokuapp.com/)
 
 # Weightalyzer v 1.0
 
-[Live website should be accessed on your mobile device](http://weightalyzer.herokuapp.com/#/)
+[Live website](http://weightalyzer.herokuapp.com/#/) should be accessed on your mobile device
 <br></br>
 
 ### Description
@@ -19,11 +19,10 @@ Weightalyzer is a cloud-based, easy-to-use, lightweight weight recording app tha
   * Users can see, in a line graph, their recorded weights as well as a five point moving average of recording weights.
   
 ### Select Screenshots
-The note tile contains a title, body, any labels assigned to the note, and two action icons.  The two action icons include a tag, which will allow for label assignment and/or creation, and a trashcan, which will delete the note.<br></br>
-<img src="https://sk-github-screenshots.s3-us-west-1.amazonaws.com/Screen+Shot+2019-11-15+at+10.31.09+AM.png" /><br></br>
-The "virtual wall" of notes.<br></br>
-<img src="https://sk-github-screenshots.s3-us-west-1.amazonaws.com/Screen+Shot+2019-11-15+at+11.25.36+AM.png" /><br></br>
-Searching for notes that contain the "camping" text string (case-insensitive search):<br></br>
+Splash page
+Login / register page
+Weight enter page
+Weight view page
 <img src="https://sk-github-screenshots.s3-us-west-1.amazonaws.com/Screen+Shot+2019-11-15+at+11.28.58+AM.png" /><br></br>
 
 ### Select Code Snippets
