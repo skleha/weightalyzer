@@ -11,10 +11,10 @@ Weightalyzer is a cloud-based, easy-to-use, lightweight weight recording app tha
 
 ### Key Features
   * Secure frontend to backend user authentication using BCrypt and JSON Web Token.
-  * Users can create a private account.
+  * Users can create a private account with username, email and password.
   * Users can record a weight; application stores all recorded weights.
-  * Users can see, in a table, current weight, previous weight, and average of last five recorded weights.
-  * Users can see, in a line graph, their recorded weights as well as a five point moving average of recording weights.
+  * Users can see, in table format, current weight, previous weight, and average of last five recorded weights.
+  * Users can see, in line graph format, their recorded weights as well as a five point moving average of recording weights.
   
 ### Select Screenshots
 Splash page
