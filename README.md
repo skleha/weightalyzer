@@ -4,7 +4,7 @@ The [live website](http://weightalyzer.herokuapp.com/#/) is designed for viewing
 <br></br>
 
 ### Description
-Weightalyzer is a cloud-based, easy-to-use, lightweight weight recording app that allows a user to record their body weight.  After logging in, the user can record a weight.  After recording a weight, the user can then see statics on their weight in both in a table and in a graph.  In this way, a user can monitor progress toward or departure from a targeted or goal weight.  At the moment, the app is designed specifically for use on a mobile device--e.g, after hopping on the scale, the user immediately enters the weight seen on the scale in the app.
+Weightalyzer is a cloud-based, easy-to-use, lightweight weight recording app that allows a user to record their body weight.  After logging in, the user can record a weight.  After recording a weight, the user can then see statics on their weight in both in a table and in a graph.  In this way, a user can monitor progress toward or departure from a targeted or goal weight.  The app is designed specifically for use on a mobile device:  for instance, after hopping on the scale, the user immediately enters the weight seen on the scale in the app.
 
 <br></br>
 ![demo](https://media.giphy.com/media/RGXQXa62TAkiqiBFci/giphy.gif)
