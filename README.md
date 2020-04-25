@@ -64,7 +64,6 @@ The user clicks on a button with text of "close" to close and save the note.
 | `username`        | string      | not null, indexed, unique |
 | `email`           | string      | not null, indexed, unique |
 | `password_digest` | string      | not null                  |
-| `session_token`   | string      | not null                  |
 | `created_at`      | datetime    | not null                  |
 | `updated_at`      | datetime    | not null                  |
 
