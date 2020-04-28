@@ -31,21 +31,6 @@ showNote(e) {
     this.props.openModal('editNoteForm');
   }
 ```
-The modal, and its contents, are displayed in a keyframes animation:
-```
-@keyframes modalAppear { 
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-```
-The user clicks on a button with text of "close" to close and save the note.
-```
-    <button
-        className="note-update-button"
-         onClick={this.handleSubmit}>
-         Close
-    </button>
-```
 
 ### Key Technologies
   * MongoDB
